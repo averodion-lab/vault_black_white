@@ -1,0 +1,18 @@
+# Vault Development — SPA fallback for GoDaddy (Apache) hosting.
+# This is a client-side React Router app: only index.html actually exists
+# as a file. Without this, visiting /portfolio, /about, etc. directly (or
+# refreshing on one of those pages) returns a 404 instead of loading the app.
+
+<IfModule mod_rewrite.c>
+  Options +FollowSymLinks -MultiViews
+  RewriteEngine On
+  RewriteBase /
+
+  # Serve real files and directories as-is (images, css, js, sitemap.xml, etc.)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Everything else falls back to index.html so React Router can handle it
+  RewriteRule ^ index.html [L]
+</IfModule>
