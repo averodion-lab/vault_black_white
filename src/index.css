@@ -402,7 +402,7 @@ footer.site { border-top: 1px solid var(--line); padding-block: 56px 32px; displ
   .menu-dots { top: 22px; width: 44px; height: 52px; }
   .menu .close { top: 22px; }
   .site-mark { top: 30px; width: 34px; height: 34px; }
-  .wordmark { top: 50%; font-size: 30vw; }
+  .wordmark { top: 37%; font-size: 30vw; }
   .hero-tagline { top: 20%; font-size: 20px; }
   .hero-cta { top: calc(20% + 66px); }
   .hero-sub { top: 12%; font-size: 18px; }
