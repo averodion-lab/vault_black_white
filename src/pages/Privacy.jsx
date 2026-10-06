@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet-async'
-import { GradientButton } from '@/components/ui/GradientButton'
-import { Reveal } from '@/components/ui/Reveal'
+import { Link } from 'react-router-dom'
 
 const SECTIONS = [
   {
@@ -164,31 +163,27 @@ export function Privacy() {
         <meta name="twitter:image" content="https://vaultwebsiteagency.com/og-image.png" />
         <link rel="canonical" href="https://vaultwebsiteagency.com/privacy" />
       </Helmet>
-
-      <section className="px-6 pb-16 pt-24">
-        <Reveal className="mx-auto max-w-3xl">
-          <span className="text-xs uppercase tracking-[0.3em] text-muted">Legal</span>
-          <h1 className="mt-4 font-display text-4xl font-bold text-ink sm:text-5xl">Privacy Policy</h1>
-          <p className="mt-3 text-sm text-muted">Last updated: September 2026</p>
-
-          <div className="mt-10 flex flex-col gap-8 text-lg leading-relaxed text-muted">
+      <section className="sec wrap" style={{ paddingTop: 'clamp(150px, 16vw, 220px)' }}>
+        <div className="legal">
+          <span className="mono muted">Legal</span>
+          <h1>Privacy Policy</h1>
+          <p className="mono muted" style={{ display: 'block', marginTop: 18 }}>Last updated: September 2026</p>
+          <div className="legal-body">
             {SECTIONS.map((s) => (
               <div key={s.h}>
-                <h2 className="font-display text-xl text-ink">{s.h}</h2>
-                <div className="mt-2">{s.body}</div>
+                <h2>{s.h}</h2>
+                <div>{s.body}</div>
               </div>
             ))}
           </div>
-
-          <div className="mt-12 rounded-lg border border-white/10 bg-base-glow/40 p-4 text-sm text-muted">
+          <div className="legal-note">
             This policy is a plain-language summary of our practices, not a substitute for legal advice. If you're
             evaluating it for compliance purposes, have it reviewed by an attorney in your jurisdiction.
           </div>
-
-          <div className="mt-10">
-            <GradientButton to="/contact">Have a question? Contact us →</GradientButton>
+          <div style={{ marginTop: 40 }}>
+            <Link className="btn" to="/contact">Have a question? Contact us →</Link>
           </div>
-        </Reveal>
+        </div>
       </section>
     </>
   )

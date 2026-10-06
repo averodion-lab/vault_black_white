@@ -1,11 +1,9 @@
 import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Check } from 'lucide-react'
-import { GradientButton } from '@/components/ui/GradientButton'
+import { Link } from 'react-router-dom'
+import { PageHero } from '@/components/sections/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
-import { PlasmaBackground } from '@/components/ui/PlasmaBackground'
-import { Typewriter } from '@/components/ui/Typewriter'
-import { TypewriterHeadline } from '@/components/ui/TypewriterHeadline'
+import { CONTACT } from '@/data/site'
 
 const EMAIL_RE = /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/
 const RL_LAST_KEY = 'vd_fl'
@@ -176,204 +174,107 @@ export function Contact() {
           })}
         </script>
       </Helmet>
+      <PageHero
+        eyebrow="Get in touch"
+        title="Let's talk."
+        lead="Tell us about your project and we'll get back to you within 24 hours. No pressure, no commitment."
+      />
+      <section className="sec wrap">
+        <div className="contact-grid">
+          <Reveal>
+            <h2 style={{ fontSize: 'clamp(34px, 4vw, 60px)' }}>Let&apos;s build something great.</h2>
+            <dl className="contact-info" style={{ marginTop: 40 }}>
+              <div>
+                <dt className="mono">Location</dt>
+                <dd>Middle Georgia<br />Serving clients nationwide</dd>
+              </div>
+              <div>
+                <dt className="mono">Email</dt>
+                <dd><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></dd>
+              </div>
+              <div>
+                <dt className="mono">Phone</dt>
+                <dd><a href={CONTACT.phoneHref}>{CONTACT.phone}</a></dd>
+              </div>
+              <div>
+                <dt className="mono">Response time</dt>
+                <dd>Within 24 hours on business days</dd>
+              </div>
+            </dl>
+          </Reveal>
 
-      <section className="relative overflow-hidden px-6 py-24">
-        <PlasmaBackground className="pointer-events-none absolute inset-0 h-full w-full" />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(7,7,12,0.05)_0%,rgba(7,7,12,0.55)_85%)]"
-        />
-        <div className="relative z-10 mx-auto grid max-w-6xl gap-12 lg:grid-cols-2">
-        <Reveal>
-          <Typewriter text="Get In Touch" className="text-xs uppercase tracking-[0.3em] text-muted" />
-          <TypewriterHeadline
-            as="h1"
-            className="mt-4 font-display text-4xl font-bold leading-tight text-ink sm:text-5xl"
-            segments={[
-              { text: "LET'S BUILD" },
-              { break: true },
-              { text: 'SOMETHING', className: 'text-glass-border2' },
-              { break: true },
-              { text: 'GREAT.' },
-            ]}
-          />
-          <p className="mt-6 max-w-md text-lg text-muted">
-            Tell us about your project and we&apos;ll get back to you within 24 hours. No pressure, no commitment —
-            just a real conversation.
-          </p>
-          <dl className="mt-8 flex flex-col gap-6">
-            <div>
-              <dt className="text-sm uppercase tracking-widest text-glass-border2">Location</dt>
-              <dd className="mt-1 text-xl text-muted">
-                Middle Georgia
-                <br />
-                Serving clients nationwide
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm uppercase tracking-widest text-glass-border2">Email</dt>
-              <dd className="mt-1 text-xl">
-                <a href="mailto:vaultdevelopmentagency@gmail.com" className="text-glass-border3">
-                  vaultdevelopmentagency@gmail.com
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm uppercase tracking-widest text-glass-border2">Phone</dt>
-              <dd className="mt-1 text-xl">
-                <a href="tel:6787556900" className="text-glass-border3">
-                  678-755-6900
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm uppercase tracking-widest text-glass-border2">Response Time</dt>
-              <dd className="mt-1 text-xl text-muted">Within 24 hours on business days</dd>
-            </div>
-          </dl>
-        </Reveal>
-
-        <Reveal delay={150} className="rounded-xl border border-white/10 bg-base/80 p-6 backdrop-blur-sm">
-          {sent ? (
-            <div className="flex flex-col items-center gap-4 py-8 text-center">
-              <Check className="text-glass-border3" size={40} />
-              <h2 className="font-display text-xl text-ink">Message Sent!</h2>
-              <p className="text-lg text-muted">Thanks for reaching out. We&apos;ll be in touch within 24 hours.</p>
-              <GradientButton to="/" className="mt-2">
-                Back to Home
-              </GradientButton>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} noValidate>
-              <h2 className="font-display text-xl text-ink">Send a Message</h2>
-              <p className="mt-1 text-lg text-muted">We&apos;ll review your details and reach out shortly.</p>
-
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          <Reveal delay={120}>
+            {sent ? (
+              <div className="sent" role="status">
+                <span className="check" aria-hidden="true">✓</span>
+                <h2 style={{ fontSize: 'clamp(30px, 3vw, 44px)' }}>Message Sent!</h2>
+                <p className="muted" style={{ margin: 0 }}>Thanks for reaching out. We&apos;ll be in touch within 24 hours.</p>
+                <Link className="btn" to="/">Back to Home</Link>
+              </div>
+            ) : (
+              <form className="form" onSubmit={handleSubmit} noValidate>
                 <div>
-                  <label htmlFor="fn" className="text-xs text-muted">
-                    First Name *
-                  </label>
-                  <input
-                    id="fn"
-                    type="text"
-                    placeholder="John"
-                    value={values.fn}
-                    onChange={set('fn')}
-                    className="mt-1 w-full rounded-md border border-white/10 bg-transparent px-3 py-2 text-ink"
+                  <span className="mono muted">Send a message</span>
+                  <p className="muted" style={{ margin: '8px 0 0' }}>Fields marked * are required.</p>
+                </div>
+                <div className="two">
+                  <div className="field">
+                    <label htmlFor="fn">First Name *</label>
+                    <input id="fn" type="text" autoComplete="given-name" placeholder="John" value={values.fn} onChange={set('fn')} />
+                  </div>
+                  <div className="field">
+                    <label htmlFor="ln">Last Name</label>
+                    <input id="ln" type="text" autoComplete="family-name" placeholder="Smith" value={values.ln} onChange={set('ln')} />
+                  </div>
+                </div>
+                <div className="two">
+                  <div className="field">
+                    <label htmlFor="em">Email Address *</label>
+                    <input id="em" type="email" autoComplete="email" placeholder="john@yourbusiness.com" value={values.em} onChange={set('em')} />
+                  </div>
+                  <div className="field">
+                    <label htmlFor="ph">Phone Number</label>
+                    <input id="ph" type="tel" autoComplete="tel" placeholder="(555) 000-0000" value={values.ph} onChange={set('ph')} />
+                  </div>
+                </div>
+                <div className="two">
+                  <div className="field">
+                    <label htmlFor="bz">Business Name</label>
+                    <input id="bz" type="text" autoComplete="organization" placeholder="Your Business LLC" value={values.bz} onChange={set('bz')} />
+                  </div>
+                  <div className="field">
+                    <label htmlFor="sv">Service Needed *</label>
+                    <select id="sv" value={values.sv} onChange={set('sv')}>
+                      <option value="">Select a service...</option>
+                      {SERVICES.map((s) => (
+                        <option key={s}>{s}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                <div className="field">
+                  <label htmlFor="ms">Tell Us About Your Project *</label>
+                  <textarea
+                    id="ms"
+                    rows={5}
+                    placeholder="Describe your project, goals, timeline, or anything else that helps us understand what you need..."
+                    value={values.ms}
+                    onChange={set('ms')}
                   />
                 </div>
-                <div>
-                  <label htmlFor="ln" className="text-xs text-muted">
-                    Last Name
-                  </label>
-                  <input
-                    id="ln"
-                    type="text"
-                    placeholder="Smith"
-                    value={values.ln}
-                    onChange={set('ln')}
-                    className="mt-1 w-full rounded-md border border-white/10 bg-transparent px-3 py-2 text-ink"
-                  />
+
+                <div style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }} aria-hidden="true">
+                  <input type="text" id="_hp" name="website" tabIndex={-1} autoComplete="off" value={values._hp} onChange={set('_hp')} />
                 </div>
-              </div>
 
-              <div className="mt-4">
-                <label htmlFor="em" className="text-xs text-muted">
-                  Email Address *
-                </label>
-                <input
-                  id="em"
-                  type="email"
-                  placeholder="john@yourbusiness.com"
-                  value={values.em}
-                  onChange={set('em')}
-                  className="mt-1 w-full rounded-md border border-white/10 bg-transparent px-3 py-2 text-ink"
-                />
-              </div>
+                {error && <p className="form-error" role="alert">{error}</p>}
 
-              <div className="mt-4">
-                <label htmlFor="ph" className="text-xs text-muted">
-                  Phone Number
-                </label>
-                <input
-                  id="ph"
-                  type="tel"
-                  placeholder="(555) 000-0000"
-                  value={values.ph}
-                  onChange={set('ph')}
-                  className="mt-1 w-full rounded-md border border-white/10 bg-transparent px-3 py-2 text-ink"
-                />
-              </div>
-
-              <div className="mt-4">
-                <label htmlFor="bz" className="text-xs text-muted">
-                  Business Name
-                </label>
-                <input
-                  id="bz"
-                  type="text"
-                  placeholder="Your Business LLC"
-                  value={values.bz}
-                  onChange={set('bz')}
-                  className="mt-1 w-full rounded-md border border-white/10 bg-transparent px-3 py-2 text-ink"
-                />
-              </div>
-
-              <div className="mt-4">
-                <label htmlFor="sv" className="text-xs text-muted">
-                  Service Needed *
-                </label>
-                <select
-                  id="sv"
-                  value={values.sv}
-                  onChange={set('sv')}
-                  className="mt-1 w-full rounded-md border border-white/10 bg-base px-3 py-2 text-ink"
-                >
-                  <option value="">Select a service...</option>
-                  {SERVICES.map((s) => (
-                    <option key={s}>{s}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="mt-4">
-                <label htmlFor="ms" className="text-xs text-muted">
-                  Tell Us About Your Project *
-                </label>
-                <textarea
-                  id="ms"
-                  rows={4}
-                  placeholder="Describe your project, goals, timeline, or anything else that helps us understand what you need..."
-                  value={values.ms}
-                  onChange={set('ms')}
-                  className="mt-1 w-full rounded-md border border-white/10 bg-transparent px-3 py-2 text-ink"
-                />
-              </div>
-
-              <div style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }} aria-hidden="true">
-                <input
-                  type="text"
-                  id="_hp"
-                  name="website"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  value={values._hp}
-                  onChange={set('_hp')}
-                />
-              </div>
-
-              {error && <p className="mt-4 text-sm text-glass-border2" role="alert">{error}</p>}
-
-              <button
-                type="submit"
-                disabled={sending}
-                className="mt-6 w-full rounded-full bg-gradient-to-r from-glass-border1 via-glass-border2 to-glass-border3 px-6 py-3 font-body text-sm font-semibold text-base transition-transform hover:scale-[1.02] disabled:opacity-60"
-              >
-                {sending ? 'Sending...' : 'Send Message →'}
-              </button>
-            </form>
-          )}
-        </Reveal>
+                <button type="submit" className="btn-arrow" disabled={sending}>
+                  {sending ? 'Sending...' : 'Send Message'} <b aria-hidden="true">→</b>
+                </button>
+              </form>
+            )}
+          </Reveal>
         </div>
       </section>
     </>

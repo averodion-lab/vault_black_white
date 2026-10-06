@@ -2,15 +2,15 @@ import { Helmet } from 'react-helmet-async'
 import { TESTIMONIALS } from '@/data/testimonials'
 import { Hero } from './home/Hero'
 import { AboutStrip } from './home/AboutStrip'
-import { Stats } from './home/Stats'
-import { ServicesCarousel } from './home/ServicesCarousel'
-import { OurApproach } from './home/OurApproach'
-import { ComparisonTable } from './home/ComparisonTable'
-import { PortfolioTeaser } from './home/PortfolioTeaser'
+import { Services } from './home/Services'
+import { Approach } from './home/Approach'
+import { Numbers } from './home/Numbers'
+import { Work } from './home/Work'
+import { Compare } from './home/Compare'
 import { Pricing } from './home/Pricing'
-import { Testimonials } from './home/Testimonials'
+import { Reviews } from './home/Reviews'
 import { FaqMini } from './home/FaqMini'
-import { CtaBand } from './home/CtaBand'
+import { CtaSection } from '@/components/sections/CtaSection'
 
 const avgRating = (TESTIMONIALS.reduce((sum, t) => sum + t.rating, 0) / TESTIMONIALS.length).toFixed(1)
 
@@ -100,15 +100,15 @@ export function Home() {
       </Helmet>
       <Hero />
       <AboutStrip />
-      <Stats />
-      <ServicesCarousel />
-      <OurApproach />
-      <ComparisonTable />
-      <PortfolioTeaser />
+      <Services />
+      <Approach />
+      <Numbers />
+      <Work />
+      <Compare />
       <Pricing />
-      <Testimonials />
+      <Reviews />
       <FaqMini />
-      <CtaBand />
+      <CtaSection />
     </>
   )
 }

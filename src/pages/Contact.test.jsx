@@ -21,7 +21,7 @@ beforeEach(() => {
 
 test('renders the hero and contact details', () => {
   setup()
-  expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/LET'S BUILD/)
+  expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent("Let's talk.")
   expect(screen.getByText('vaultdevelopmentagency@gmail.com')).toHaveAttribute(
     'href',
     'mailto:vaultdevelopmentagency@gmail.com'

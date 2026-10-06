@@ -11,9 +11,7 @@ test('renders a heading, a link home, and quick links', () => {
       </MemoryRouter>
     </HelmetProvider>
   )
-  expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/page not found/i)
-  expect(screen.getByText(/back to home/i)).toHaveAttribute('href', '/')
-  ;['Portfolio', 'About', 'Contact'].forEach((label) => {
-    expect(screen.getByText(label)).toHaveAttribute('href', `/${label.toLowerCase()}`)
-  })
+  expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Locked.')
+  expect(screen.getByRole('link', { name: /back to home/i })).toHaveAttribute('href', '/')
+  ;['Portfolio', 'About', 'Contact'].forEach((l) => expect(screen.getByRole('link', { name: l })).toBeInTheDocument())
 })

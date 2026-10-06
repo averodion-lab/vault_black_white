@@ -1,49 +1,57 @@
-import { GradientButton } from '@/components/ui/GradientButton'
-import { Typewriter } from '@/components/ui/Typewriter'
-import { TypewriterHeadline } from '@/components/ui/TypewriterHeadline'
-import { PlasmaBackground } from '@/components/ui/PlasmaBackground'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Plasma } from '@/components/ui/Plasma'
+import { HERO_SERVICES } from '@/data/site'
 
-const SHIMMER =
-  'bg-[length:250%_100%] bg-gradient-to-r from-glass-border1 via-glass-border2 to-glass-border3 bg-clip-text text-transparent [animation:shimmer-text_4s_linear_infinite]'
+function useCycle(length, ms) {
+  const [i, setI] = useState(0)
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const id = setInterval(() => setI((v) => (v + 1) % length), ms)
+    return () => clearInterval(id)
+  }, [length, ms])
+  return [i, setI]
+}
 
 export function Hero() {
+  const [active, setActive] = useCycle(HERO_SERVICES.length, 2400)
+
   return (
-    <section className="relative overflow-hidden px-6 pb-20 pt-24 text-center">
-      <PlasmaBackground className="pointer-events-none absolute inset-0 h-full w-full" />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(7,7,12,0.05)_0%,rgba(7,7,12,0.55)_85%)]"
-      />
-      <div className="relative z-10 [animation:fade-up-in_0.9s_ease-out_both]">
-        <Typewriter text="Web & Software Agency" className="font-body text-xs uppercase tracking-[0.3em] text-muted" />
-        <TypewriterHeadline
-          as="h1"
-          className="mt-4 font-display text-4xl font-bold leading-tight text-ink sm:text-6xl"
-          segments={[
-            { text: 'WEB & ' },
-            { text: 'SOFTWARE', className: SHIMMER },
-            { break: true },
-            { text: 'DEVELOPMENT' },
-            { break: true },
-            { text: 'AGENCY' },
-          ]}
-        />
-        <p className="mx-auto mt-6 max-w-xl font-body text-lg text-muted">
-          Upgrade your business with tailored custom website development, elite-level design, and AI implementations
-          built for businesses everywhere.
-        </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <GradientButton to="/contact">Submit Inquiry</GradientButton>
-          <GradientButton href="#services" className="border border-white/20 bg-none bg-transparent text-ink">
-            View Services
-          </GradientButton>
-        </div>
-        <div className="mt-6 flex justify-center gap-3 text-xs text-muted">
-          <span>Serving Nationwide</span>
-          <span>·</span>
-          <span>100% Custom Built</span>
-        </div>
+    <header className="hero">
+      <Plasma edge={0.46} />
+
+      {/* difference layer: reads black over the white plasma, white over the black */}
+      <div className="dx">
+        <p className="hero-note fade" style={{ '--d': '1s' }}>Reach out to start your project</p>
+        <p className="hero-tagline fade" style={{ '--d': '1.25s' }}>Websites That Bring You Customers</p>
+        <h1 className="wordmark" aria-label="Vault">
+          {'Vault'.split('').map((ch, i) => (
+            <span key={i} style={{ '--i': i }} aria-hidden="true">{ch}</span>
+          ))}
+        </h1>
+        <svg className="sparkle" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
+          <circle cx="24" cy="24" r="6" />
+          <path d="M24 0v48M0 24h48" stroke="currentColor" strokeWidth="2" />
+        </svg>
       </div>
-    </section>
+
+      <div className="solid">
+        <p className="hero-sub fade" style={{ '--d': '1.4s' }}>
+          Web &amp; Software
+          <br />
+          Development Agency
+        </p>
+        <ul className="hero-svc fade" style={{ '--d': '1.2s' }} aria-label="What we build">
+          {HERO_SERVICES.map((s, i) => (
+            <li key={s} className={i === active ? 'on' : undefined} onMouseEnter={() => setActive(i)}>
+              {s}
+            </li>
+          ))}
+        </ul>
+        <Link className="hero-cta fade" to="/contact" style={{ '--d': '1.35s' }}>
+          Get a free quote <b aria-hidden="true">→</b>
+        </Link>
+      </div>
+    </header>
   )
 }

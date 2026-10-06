@@ -14,20 +14,19 @@ export function NotFound() {
         <title>Page Not Found | Vault Development</title>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
-      <div className="px-6 py-24 text-center">
-        <h1 className="font-display text-3xl text-ink">Page not found</h1>
-        <p className="mt-4 text-lg text-muted">The page you're looking for doesn't exist or has moved.</p>
-        <Link to="/" className="mt-6 inline-block text-glass-border3">
-          Back to home →
+      <section className="notfound wrap">
+        <span className="mono muted">Error 404</span>
+        <h1>Locked.</h1>
+        <p className="muted" style={{ margin: 0, fontSize: 20 }}>Page not found. The page you&apos;re looking for doesn&apos;t exist or has moved.</p>
+        <Link className="btn-arrow" to="/">
+          Back to home <b aria-hidden="true">→</b>
         </Link>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted">
+        <nav aria-label="Quick links">
           {QUICK_LINKS.map((l) => (
-            <Link key={l.to} to={l.to} className="transition-colors hover:text-ink">
-              {l.label}
-            </Link>
+            <Link key={l.to} to={l.to}>{l.label}</Link>
           ))}
-        </div>
-      </div>
+        </nav>
+      </section>
     </>
   )
 }
