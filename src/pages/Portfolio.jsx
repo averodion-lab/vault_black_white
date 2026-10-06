@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async'
 import { PageHero } from '@/components/sections/PageHero'
 import { ProjectCard } from '@/components/sections/ProjectCard'
 import { CtaSection } from '@/components/sections/CtaSection'
+import { FounderNote } from '@/components/sections/FounderNote'
 import { PROJECTS } from '@/data/site'
 
 export function Portfolio() {
@@ -55,6 +56,10 @@ export function Portfolio() {
         lead="Custom websites, AI systems, and digital products built for real businesses."
       />
       <section className="sec wrap">
+        <FounderNote className="note-intro">
+          Every project here was custom-built for a real business. Ask me about any of them and I&apos;ll walk you
+          through how we did it.
+        </FounderNote>
         <div className="work full">
           {PROJECTS.map((p, i) => (
             <ProjectCard key={p.title} project={p} delay={(i % 2) * 90} />

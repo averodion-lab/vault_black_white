@@ -23,12 +23,48 @@ export const PAGES = [
 export const HERO_SERVICES = ['Web Development', 'AI Implementation', 'App Development', 'Digital Marketing']
 
 export const SERVICES = [
-  { title: 'Web Development', tag: 'Development', body: 'Clean, fast, and scalable code for any project, from simple landing pages to full multi-page platforms. Built right the first time.' },
-  { title: 'AI Implementation', tag: 'AI', body: 'Intelligent chatbots, workflow automation, and AI tools integrated directly into your business to save time and boost revenue.' },
-  { title: 'App Development', tag: 'Mobile', body: 'iOS and Android apps built with React Native. One codebase, two platforms, and real results for your growing business.' },
-  { title: 'Software Development', tag: 'Software', body: 'Custom software tools, internal dashboards, and business automation systems built for the way your team actually works.' },
-  { title: 'Digital Marketing', tag: 'Marketing', body: 'SEO, paid advertising, and content strategy that put your business in front of customers actively searching for what you offer.' },
-  { title: 'Maintenance & Support', tag: 'Support', body: 'Security patches, regular updates, backups, and fast support so you can focus on running your business.' },
+  {
+    title: 'Web Development',
+    tag: 'Development',
+    body: 'Clean, fast, and scalable code for any project, from simple landing pages to full multi-page platforms. Built right the first time.',
+    tags: ['Landing pages', 'Multi-page sites', 'Mobile-first', 'SEO-ready'],
+    projects: ['Ramzef Construction', 'Tower Tigers Crew LLC', 'Trusted Roofing Co.', 'Seva Photos', "Jacey's Moving & Junk Removal"],
+  },
+  {
+    title: 'AI Implementation',
+    tag: 'AI',
+    body: 'Intelligent chatbots, workflow automation, and AI tools integrated directly into your business to save time and boost revenue.',
+    tags: ['Chatbots', 'Workflow automation', 'Lead follow-up', 'Custom AI tools'],
+    projects: ['LeadEngine'],
+  },
+  {
+    title: 'App Development',
+    tag: 'Mobile',
+    body: 'iOS and Android apps built with React Native. One codebase, two platforms, and real results for your growing business.',
+    tags: ['iOS', 'Android', 'React Native', 'One codebase'],
+    projects: [],
+  },
+  {
+    title: 'Software Development',
+    tag: 'Software',
+    body: 'Custom software tools, internal dashboards, and business automation systems built for the way your team actually works.',
+    tags: ['Dashboards', 'Internal tools', 'Automation', 'Integrations'],
+    projects: ['LeadEngine'],
+  },
+  {
+    title: 'Digital Marketing',
+    tag: 'Marketing',
+    body: 'SEO, paid advertising, and content strategy that put your business in front of customers actively searching for what you offer.',
+    tags: ['SEO', 'Google Ads', 'Meta & LinkedIn ads', 'Content strategy'],
+    projects: [],
+  },
+  {
+    title: 'Maintenance & Support',
+    tag: 'Support',
+    body: 'Security patches, regular updates, backups, and fast support so you can focus on running your business.',
+    tags: ['Security updates', 'Backups', 'Content updates', 'Fast fixes'],
+    projects: [],
+  },
 ]
 
 export const STEPS = [

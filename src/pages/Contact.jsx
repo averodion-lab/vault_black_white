@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { PageHero } from '@/components/sections/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
+import { FounderNote } from '@/components/sections/FounderNote'
 import { CONTACT } from '@/data/site'
 
 const EMAIL_RE = /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/
@@ -201,6 +202,9 @@ export function Contact() {
                 <dd>Within 24 hours on business days</dd>
               </div>
             </dl>
+            <FounderNote className="note-side">
+              I read every message myself and reply within 24 hours on business days.
+            </FounderNote>
           </Reveal>
 
           <Reveal delay={120}>

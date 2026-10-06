@@ -3,6 +3,7 @@ import { PageHero } from '@/components/sections/PageHero'
 import { FaqList } from '@/components/sections/FaqList'
 import { CtaSection } from '@/components/sections/CtaSection'
 import { Reveal } from '@/components/ui/Reveal'
+import { FounderNote } from '@/components/sections/FounderNote'
 import { FAQ_CATEGORIES } from '@/data/site'
 
 export function FAQ() {
@@ -65,6 +66,9 @@ export function FAQ() {
             <p style={{ color: 'var(--mute-ink)', marginTop: 18, maxWidth: '34ch' }}>
               Call 678-755-6900 or send us a message. We reply within 24 hours on business days.
             </p>
+            <FounderNote tone="light" className="note-side">
+              No question is too small. Ask me directly and I&apos;ll give you a straight answer.
+            </FounderNote>
           </Reveal>
           <div>
             {FAQ_CATEGORIES.map((c) => (

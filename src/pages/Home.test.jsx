@@ -60,3 +60,17 @@ test('the comparison table has 8 feature rows', () => {
   const table = screen.getByRole('table')
   expect(within(table).getAllByRole('row')).toHaveLength(9)
 })
+
+test('each service lists what it includes, and links to projects built with it', () => {
+  setup()
+  const web = screen.getByRole('list', { name: 'Web Development includes' })
+  expect(within(web).getByText('Landing pages')).toBeInTheDocument()
+  const ai = screen.getByRole('list', { name: 'AI Implementation includes' })
+  expect(within(ai).getByText('Chatbots')).toBeInTheDocument()
+  expect(screen.getAllByRole('link', { name: /LeadEngine/ })[0]).toHaveAttribute('href', '/portfolio')
+})
+
+test('shows the Google rating', () => {
+  setup()
+  expect(screen.getByLabelText(/rated 5\.0 out of 5 on google/i)).toBeInTheDocument()
+})

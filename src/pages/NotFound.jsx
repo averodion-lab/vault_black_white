@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
+import { FounderNote } from '@/components/sections/FounderNote'
 
 const QUICK_LINKS = [
   { to: '/portfolio', label: 'Portfolio' },
@@ -21,6 +22,7 @@ export function NotFound() {
         <Link className="btn-arrow" to="/">
           Back to home <b aria-hidden="true">→</b>
         </Link>
+        <FounderNote className="note-side">This page is locked. Let me get you back on track.</FounderNote>
         <nav aria-label="Quick links">
           {QUICK_LINKS.map((l) => (
             <Link key={l.to} to={l.to}>{l.label}</Link>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Reveal } from '@/components/ui/Reveal'
+import { FounderNote } from '@/components/sections/FounderNote'
 import { TIERS } from '@/data/site'
 
 export function Pricing() {
@@ -24,6 +25,10 @@ export function Pricing() {
           </Reveal>
         ))}
       </div>
+      <FounderNote className="note-wide">
+        I personally lead every build, from the first call to the last line of code. You talk to me directly, and
+        nothing ships that I wouldn&apos;t put my own name on.
+      </FounderNote>
     </section>
   )
 }

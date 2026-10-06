@@ -18,7 +18,12 @@ export function Reviews() {
   return (
     <section className="sec" id="reviews">
       <Reveal className="sec-head wrap">
-        <span className="mono">Google reviews · {avg}</span>
+        <div className="rating" aria-label={`Rated ${avg} out of 5 on Google from ${TESTIMONIALS.length} reviews`}>
+          <span className="mono">Google reviews</span>
+          <b aria-hidden="true">{avg}<small>/5</small></b>
+          <span className="stars-5" aria-hidden="true">★★★★★</span>
+          <span className="mono muted" aria-hidden="true">{TESTIMONIALS.length} reviews</span>
+        </div>
         <h2>What our clients say</h2>
       </Reveal>
       <div className="marquee">
