@@ -104,10 +104,10 @@ export const FAQ_MINI = [
   { q: 'Do you offer support after launch?', a: 'Yes. We offer monthly maintenance plans and are always available for updates, questions, and improvements.' },
 ]
 
-// EXAMPLE numbers for the "By the numbers" section. Replace with real counts, then set isExample to false.
-// While isExample is true the section only renders in development, never in a production build.
+// "By the numbers" section. Confirmed as real counts by Rodion on 2026-10-15.
+// If isExample is ever set back to true, the section renders only in development, never in production.
 export const NUMBERS = {
-  isExample: true,
+  isExample: false,
   byService: [['Web Development', 31], ['AI Implementation', 8], ['Digital Marketing', 7], ['Apps & Software', 6]],
   byYear: [['2024', 14], ['2025', 26], ['2026', 12, 'so far']],
   clients: { total: 52, staying: 31 },

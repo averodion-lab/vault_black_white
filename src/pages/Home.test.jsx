@@ -45,9 +45,10 @@ test('shows both team members with photos', () => {
   expect(screen.getByAltText('Ryan Grant')).toHaveAttribute('src', '/assets/images/team-ryan-grant.jpg')
 })
 
-test('marks the example numbers so they are not mistaken for real data', () => {
+test('shows the real numbers without an example warning', () => {
   setup()
-  expect(screen.getByText(/example numbers · replace before launch/i)).toBeInTheDocument()
+  expect(screen.getByRole('img', { name: 'Projects by service, 52 total' })).toBeInTheDocument()
+  expect(screen.queryByText(/example numbers/i)).not.toBeInTheDocument()
 })
 
 test('renders every review', () => {
