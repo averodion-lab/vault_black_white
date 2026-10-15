@@ -507,3 +507,11 @@ html.lenis, html.lenis body { scroll-behavior: auto !important; }
 @media (prefers-reduced-motion: reduce) {
   .page-grain { animation: none; }
 }
+
+/* centered team + portfolio text */
+.team-head { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; }
+.member .who { justify-items: center; text-align: center; }
+.member p { text-align: center; margin-inline: auto; }
+.proj .cap { justify-content: center; text-align: center; }
+.proj > p { text-align: center; margin-inline: auto; }
+.proj > .link-arrow { justify-self: center; }
