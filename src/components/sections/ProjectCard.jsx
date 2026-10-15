@@ -1,10 +1,17 @@
 import { Reveal } from '@/components/ui/Reveal'
 
 export function ProjectCard({ project, short = false, delay = 0 }) {
-  const { img, alt, cat, title, body, href } = project
+  const { num, img, alt, cat, title, body, href } = project
+  // Same gallery frame as the team photos: white mat, engraved plate, viewfinder corners.
   const shot = (
-    <div className="shot">
-      <img src={img} alt={alt} loading="lazy" />
+    <div className="frame">
+      <div className="photo wide">
+        <img src={img} alt={alt} loading="lazy" />
+      </div>
+      <div className="plate" aria-hidden="true">
+        <b>No. {num}</b>
+        <span>{cat}</span>
+      </div>
     </div>
   )
   return (
@@ -18,7 +25,6 @@ export function ProjectCard({ project, short = false, delay = 0 }) {
       )}
       <div className="cap">
         <h3>{title}</h3>
-        <span className="mono">{cat}</span>
       </div>
       {!short && <p>{body}</p>}
       {!short && href && (
