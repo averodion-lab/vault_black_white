@@ -20,7 +20,7 @@ test('renders the hero with the wordmark, tagline and quote CTA', () => {
   expect(screen.getByText('Websites That Bring You Customers')).toBeInTheDocument()
   expect(screen.getByRole('link', { name: /get a free quote/i })).toHaveAttribute('href', '/contact')
   const svc = screen.getByRole('list', { name: 'What we build' })
-  expect(within(svc).getAllByRole('listitem')).toHaveLength(4)
+  expect(within(svc).getAllByRole('listitem')).toHaveLength(5)
 })
 
 test('renders every homepage section', () => {

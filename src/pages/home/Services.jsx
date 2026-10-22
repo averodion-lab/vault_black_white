@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Reveal } from '@/components/ui/Reveal'
+import { IsoIcon } from '@/components/ui/IsoIcon'
 import { SERVICES } from '@/data/site'
 
 export function Services() {
@@ -13,6 +14,7 @@ export function Services() {
         {SERVICES.map((s, i) => (
           <Reveal as="li" className={i % 2 ? 'svc-block flip' : 'svc-block'} key={s.title}>
             <div className="svc-num">
+              <IsoIcon id={s.icon} className="svc-icon" />
               <span className="mono">/{String(i + 1).padStart(2, '0')}</span>
               <span className="mono">{s.tag}</span>
             </div>

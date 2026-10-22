@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Reveal } from '@/components/ui/Reveal'
+import { IsoIcon } from '@/components/ui/IsoIcon'
 import { STEPS } from '@/data/site'
 
 export function Approach() {
@@ -26,9 +27,12 @@ export function Approach() {
         <h2>From first call to launch day</h2>
       </Reveal>
       <div ref={lineRef} className={drawn ? 'orbit-line go' : 'orbit-line'} />
-      <ol className="steps" style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+      <ol className={drawn ? 'steps go' : 'steps'} style={{ listStyle: 'none', margin: 0, padding: 0 }}>
         {STEPS.map((s, i) => (
           <Reveal as="li" className="step" key={s.n} delay={i * 120}>
+            <div className="step-art">
+              <IsoIcon id={s.icon} className="step-icon" />
+            </div>
             <span className="n">{s.n} / {s.label}</span>
             <h3>{s.title}</h3>
             <p>{s.body}</p>

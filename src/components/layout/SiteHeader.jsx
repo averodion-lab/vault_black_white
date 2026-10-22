@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Mark } from '@/components/ui/Mark'
 import { CONTACT, PAGES } from '@/data/site'
+import { asset } from '@/lib/utils'
 
 /**
  * Fixed header in a difference-blend layer, so it reads black over white and
@@ -51,7 +52,7 @@ export function SiteHeader() {
         className="site-avatar"
         role="img"
         aria-label="Rodion Averianov, founder"
-        style={{ backgroundImage: "url('/assets/images/team-rodion-averianov.jpg')" }}
+        style={{ backgroundImage: `url('${asset('/assets/images/team-rodion-averianov.jpg')}')` }}
       />
 
       <div className={open ? 'menu open' : 'menu'} id="site-menu" role="dialog" aria-modal="true" aria-label="Site menu" aria-hidden={!open}>

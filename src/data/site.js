@@ -1,3 +1,4 @@
+import { asset } from '@/lib/utils'
 // Site content in one place. Pages and sections read from here.
 
 export const CONTACT = {
@@ -20,12 +21,13 @@ export const PAGES = [
   { to: '/contact', label: 'Contact' },
 ]
 
-export const HERO_SERVICES = ['Web Development', 'AI Implementation', 'App Development', 'Digital Marketing']
+export const HERO_SERVICES = ['Web Development', 'AI Implementation', 'App Development', 'Digital Marketing', 'Business Solutions']
 
 export const SERVICES = [
   {
     title: 'Web Development',
     tag: 'Development',
+    icon: 'web',
     body: 'Clean, fast, and scalable code for any project, from simple landing pages to full multi-page platforms. Built right the first time.',
     tags: ['Landing pages', 'Multi-page sites', 'Mobile-first', 'SEO-ready'],
     projects: ['Ramzef Construction', 'Tower Tigers Crew LLC', 'Trusted Roofing Co.', 'Seva Photos', "Jacey's Moving & Junk Removal"],
@@ -33,6 +35,7 @@ export const SERVICES = [
   {
     title: 'AI Implementation',
     tag: 'AI',
+    icon: 'ai',
     body: 'Intelligent chatbots, workflow automation, and AI tools integrated directly into your business to save time and boost revenue.',
     tags: ['Chatbots', 'Workflow automation', 'Lead follow-up', 'Custom AI tools'],
     projects: ['LeadEngine'],
@@ -40,6 +43,7 @@ export const SERVICES = [
   {
     title: 'App Development',
     tag: 'Mobile',
+    icon: 'app',
     body: 'iOS and Android apps built with React Native. One codebase, two platforms, and real results for your growing business.',
     tags: ['iOS', 'Android', 'React Native', 'One codebase'],
     projects: [],
@@ -47,6 +51,7 @@ export const SERVICES = [
   {
     title: 'Software Development',
     tag: 'Software',
+    icon: 'software',
     body: 'Custom software tools, internal dashboards, and business automation systems built for the way your team actually works.',
     tags: ['Dashboards', 'Internal tools', 'Automation', 'Integrations'],
     projects: ['LeadEngine'],
@@ -54,6 +59,7 @@ export const SERVICES = [
   {
     title: 'Digital Marketing',
     tag: 'Marketing',
+    icon: 'marketing',
     body: 'SEO, paid advertising, and content strategy that put your business in front of customers actively searching for what you offer.',
     tags: ['SEO', 'Google Ads', 'Meta & LinkedIn ads', 'Content strategy'],
     projects: [],
@@ -61,6 +67,7 @@ export const SERVICES = [
   {
     title: 'Maintenance & Support',
     tag: 'Support',
+    icon: 'support',
     body: 'Security patches, regular updates, backups, and fast support so you can focus on running your business.',
     tags: ['Security updates', 'Backups', 'Content updates', 'Fast fixes'],
     projects: [],
@@ -68,9 +75,9 @@ export const SERVICES = [
 ]
 
 export const STEPS = [
-  { n: '01', label: 'Analyze', title: 'We Analyze', body: 'We dig into your business, competitors, and goals to figure out exactly what will move the needle for you.' },
-  { n: '02', label: 'Design', title: 'We Design', body: 'Every layout, color, and interaction is crafted deliberately for your brand. Nothing generic, nothing templated.' },
-  { n: '03', label: 'Implement', title: 'We Implement', body: 'Clean, tested code shipped to production, then supported long after launch.' },
+  { n: '01', label: 'Analyze', icon: 'analyze', title: 'We Analyze', body: 'We dig into your business, competitors, and goals to figure out exactly what will move the needle for you.' },
+  { n: '02', label: 'Design', icon: 'design', title: 'We Design', body: 'Every layout, color, and interaction is crafted deliberately for your brand. Nothing generic, nothing templated.' },
+  { n: '03', label: 'Implement', icon: 'implement', title: 'We Implement', body: 'Clean, tested code shipped to production, then supported long after launch.' },
 ]
 
 export const STATS = [
@@ -116,7 +123,7 @@ export const NUMBERS = {
 export const PROJECTS = [
   {
     num: '01',
-    img: '/assets/images/leadengine-ai-system.webp',
+    img: asset('/assets/images/leadengine-ai-system.webp'),
     alt: 'LeadEngine AI System',
     cat: 'AI Implementation & Web App',
     title: 'LeadEngine',
@@ -125,7 +132,7 @@ export const PROJECTS = [
   },
   {
     num: '02',
-    img: '/assets/images/ramzef-construction-website.webp',
+    img: asset('/assets/images/ramzef-construction-website.webp'),
     alt: 'Ramzef Construction Website',
     cat: 'Web Design & Development',
     title: 'Ramzef Construction',
@@ -134,7 +141,7 @@ export const PROJECTS = [
   },
   {
     num: '03',
-    img: '/assets/images/tower-tigers-crew-website.webp',
+    img: asset('/assets/images/tower-tigers-crew-website.webp'),
     alt: 'Tower Tigers Crew LLC Website',
     cat: 'Web Design & Development',
     title: 'Tower Tigers Crew LLC',
@@ -143,7 +150,7 @@ export const PROJECTS = [
   },
   {
     num: '04',
-    img: '/assets/images/trusted-roofing-website.webp',
+    img: asset('/assets/images/trusted-roofing-website.webp'),
     alt: 'Trusted Roofing Website',
     cat: 'Web Design & Development',
     title: 'Trusted Roofing Co.',
@@ -152,7 +159,7 @@ export const PROJECTS = [
   },
   {
     num: '05',
-    img: '/assets/images/seva-photos-website.webp',
+    img: asset('/assets/images/seva-photos-website.webp'),
     alt: 'Seva Photos Website',
     cat: 'Web Design & Development',
     title: 'Seva Photos',
@@ -161,7 +168,7 @@ export const PROJECTS = [
   },
   {
     num: '06',
-    img: '/assets/images/jaceys-moving-website.webp',
+    img: asset('/assets/images/jaceys-moving-website.webp'),
     alt: "Jacey's Moving & Junk Removal Website",
     cat: 'Web Design & Development',
     title: "Jacey's Moving & Junk Removal",
@@ -172,14 +179,14 @@ export const PROJECTS = [
 
 export const TEAM = [
   {
-    photo: '/assets/images/team-rodion-averianov.jpg',
+    photo: asset('/assets/images/team-rodion-averianov.jpg'),
     name: 'Rodion Averianov',
     title: 'Founder & Lead Software Developer',
     plate: 'Founder',
     bio: "Rodion founded Vault Development to bring enterprise-level software engineering to businesses that usually can't access it. A GCSU Information Systems graduate with a Computer Science minor, he leads every technical build personally — from architecture to the last line of code — so nothing ships that he wouldn't put his own name on.",
   },
   {
-    photo: '/assets/images/team-ryan-grant.jpg',
+    photo: asset('/assets/images/team-ryan-grant.jpg'),
     name: 'Ryan Grant',
     title: 'Digital Marketing Specialist',
     plate: 'Marketing',
@@ -208,26 +215,32 @@ export const HIGHLIGHTS = [
 
 export const VALUES = [
   {
+    icon: 'honesty',
     title: 'Honesty First',
     body: 'Transparent timelines, honest pricing, and straightforward communication throughout every project.',
   },
   {
+    icon: 'quality',
     title: 'Quality Over Speed',
     body: "We'd rather take the time to build something exceptional than rush out something mediocre.",
   },
   {
+    icon: 'local',
     title: 'Local Commitment',
     body: "We're invested in the success of Georgia businesses. When our clients grow, our community grows.",
   },
   {
+    icon: 'purpose',
     title: 'Tech With Purpose',
     body: 'We only recommend technology that solves real problems and delivers measurable value for you.',
   },
   {
+    icon: 'partnership',
     title: 'Long-Term Partnership',
     body: "We're not a one-and-done shop. We build lasting relationships and stay engaged long after launch.",
   },
   {
+    icon: 'results',
     title: 'Results-Driven',
     body: "A beautiful website is worthless if it doesn't perform. We build around measurable outcomes.",
   },

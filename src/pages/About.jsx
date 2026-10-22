@@ -4,6 +4,9 @@ import { Team } from '@/components/sections/Team'
 import { CtaSection } from '@/components/sections/CtaSection'
 import { Reveal } from '@/components/ui/Reveal'
 import { CountUp } from '@/components/ui/CountUp'
+import { asset } from '@/lib/utils'
+import { IsoIcon } from '@/components/ui/IsoIcon'
+import { isoIcon } from '@/lib/isoIcons'
 import { HIGHLIGHTS, STATS, VALUES } from '@/data/site'
 
 export function About() {
@@ -77,6 +80,21 @@ export function About() {
               We&apos;re based in Middle Georgia, and we work with clients nationwide, bringing local dedication and
               modern technology to every project we take on.
             </p>
+            <figure className="frame story-shot">
+              <div className="photo">
+                <img
+                  src={asset('/assets/images/app-development-phone.webp')}
+                  alt="A custom app built by Vault Development shown on a phone"
+                  width="1487"
+                  height="1058"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption className="plate">
+                <b>App Development</b>
+                <span>Built by Vault</span>
+              </figcaption>
+            </figure>
           </Reveal>
           <Reveal delay={90}>
             <p>
@@ -112,11 +130,19 @@ export function About() {
           <span className="mono">What we stand for</span>
           <h2>Our values</h2>
         </Reveal>
-        <div className="grid-list">
+        <div className="grid-list values">
           {VALUES.map((v, i) => (
-            <Reveal key={v.title} delay={(i % 3) * 80}>
+            <Reveal key={v.title} delay={(i % 3) * 80} className="value">
+              <IsoIcon id={v.icon} labels={false} className="value-icon" />
               <h3>{v.title}</h3>
               <p>{v.body}</p>
+              <ol className="value-tags" aria-hidden="true">
+                {isoIcon(v.icon).labels.map((t, j) => (
+                  <li key={t} style={{ '--j': j }}>
+                    <span>0{j + 1}</span> {t}
+                  </li>
+                ))}
+              </ol>
             </Reveal>
           ))}
         </div>
