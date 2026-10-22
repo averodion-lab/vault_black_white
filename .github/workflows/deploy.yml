@@ -28,8 +28,13 @@ jobs:
       - run: npm run build
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
-      # SPA fallback so deep links like /about resolve to the app
-      - run: cp dist/index.html dist/404.html
+      # Give each route a real index.html so deep links return 200 (not the 404 fallback),
+      # and keep 404.html for unknown paths
+      - run: |
+          cp dist/index.html dist/404.html
+          for route in portfolio about faq contact privacy terms services; do
+            mkdir -p "dist/$route" && cp dist/index.html "dist/$route/index.html"
+          done
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

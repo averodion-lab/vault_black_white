@@ -72,5 +72,5 @@ test('each service lists what it includes, and links to projects built with it',
 
 test('shows the Google rating', () => {
   setup()
-  expect(screen.getByLabelText(/rated 5\.0 out of 5 on google/i)).toBeInTheDocument()
+  expect(screen.getByLabelText(/rated 4\.9 out of 5 on google from 30 reviews/i)).toBeInTheDocument()
 })

@@ -1,10 +1,17 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Mark } from '@/components/ui/Mark'
 import { CONTACT, PAGES, SERVICES, SOCIALS } from '@/data/site'
 
 export function Footer() {
+  const { pathname } = useLocation()
   return (
     <footer className="site wrap">
+      {pathname.replace(/\/$/, '') !== '/contact' && (
+        <div className="foot-cta">
+          <p>Have a project in mind?</p>
+          <Link className="btn-arrow" to="/contact">Start your project <b aria-hidden="true">→</b></Link>
+        </div>
+      )}
       <div className="foot-top">
         <div className="foot-brand">
           <Mark size={32} />

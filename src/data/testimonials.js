@@ -1,3 +1,7 @@
+// Overall Google profile score. The quotes below are a verbatim subset, so the
+// headline numbers come from the profile rather than being averaged from them.
+export const GOOGLE_RATING = { score: 4.9, count: 30 }
+
 // Verbatim Google reviews, pulled from the live Elfsight widget this replaces.
 export const TESTIMONIALS = [
   {

@@ -1,5 +1,5 @@
 import { Reveal } from '@/components/ui/Reveal'
-import { TESTIMONIALS } from '@/data/testimonials'
+import { GOOGLE_RATING, TESTIMONIALS } from '@/data/testimonials'
 
 function Card({ name, rating, body, hidden }) {
   return (
@@ -14,15 +14,15 @@ function Card({ name, rating, body, hidden }) {
 }
 
 export function Reviews() {
-  const avg = (TESTIMONIALS.reduce((s, t) => s + t.rating, 0) / TESTIMONIALS.length).toFixed(1)
+  const { score, count } = GOOGLE_RATING
   return (
     <section className="sec" id="reviews">
       <Reveal className="sec-head wrap">
-        <div className="rating" aria-label={`Rated ${avg} out of 5 on Google from ${TESTIMONIALS.length} reviews`}>
+        <div className="rating" aria-label={`Rated ${score} out of 5 on Google from ${count} reviews`}>
           <span className="mono">Google reviews</span>
-          <b aria-hidden="true">{avg}<small>/5</small></b>
+          <b aria-hidden="true">{score.toFixed(1)}<small>/5</small></b>
           <span className="stars-5" aria-hidden="true">★★★★★</span>
-          <span className="mono muted" aria-hidden="true">{TESTIMONIALS.length} reviews</span>
+          <span className="mono muted" aria-hidden="true">{count} reviews</span>
         </div>
         <h2>What our clients say</h2>
       </Reveal>

@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async'
-import { TESTIMONIALS } from '@/data/testimonials'
+import { GOOGLE_RATING, TESTIMONIALS } from '@/data/testimonials'
 import { Hero } from './home/Hero'
 import { AboutStrip } from './home/AboutStrip'
 import { Services } from './home/Services'
@@ -10,8 +10,6 @@ import { Compare } from './home/Compare'
 import { Pricing } from './home/Pricing'
 import { Reviews } from './home/Reviews'
 import { FaqMini } from './home/FaqMini'
-
-const avgRating = (TESTIMONIALS.reduce((sum, t) => sum + t.rating, 0) / TESTIMONIALS.length).toFixed(1)
 
 const JSON_LD = {
   '@context': 'https://schema.org',
@@ -41,8 +39,8 @@ const JSON_LD = {
       ],
       aggregateRating: {
         '@type': 'AggregateRating',
-        ratingValue: avgRating,
-        reviewCount: TESTIMONIALS.length,
+        ratingValue: GOOGLE_RATING.score.toFixed(1),
+        reviewCount: GOOGLE_RATING.count,
         bestRating: '5',
         worstRating: '1',
       },

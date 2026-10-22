@@ -1,16 +1,23 @@
-# React + Vite
+# Vault Development website
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Marketing site for Vault Development, built with React, Vite and Tailwind.
 
-Currently, two official plugins are available:
+## Develop
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```sh
+npm install
+npm run dev     # local dev server
+npm test        # Vitest suite
+npm run lint    # oxlint
+npm run build   # production build into dist/
+```
 
-## React Compiler
+## Deploy
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Pushes to `black-white-redesign` run `.github/workflows/deploy.yml`, which tests, builds and publishes to GitHub Pages at https://averodion-lab.github.io/vault_black_white/.
 
-## Expanding the Oxlint configuration
+The build reads `BASE_PATH` for the subpath; locally it defaults to `/`. Reference files in `public/` through `asset()` from `src/lib/utils.js` so they resolve under either base.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Content
+
+Copy, services, portfolio and team live in `src/data/site.js`; reviews and the Google rating live in `src/data/testimonials.js`.
