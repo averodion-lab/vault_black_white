@@ -472,8 +472,9 @@ html.lenis, html.lenis body { scroll-behavior: auto !important; }
 
 /* services as alternating blocks */
 .svc-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-ink); }
-/* The last row already carries its own padding and rule, so the full section padding below it read as an empty band */
-#services.sec { padding-bottom: clamp(24px, 3vw, 48px); }
+/* The last row's own padding ends the section; extra section padding plus a closing rule read as an empty band */
+#services.sec { padding-bottom: 0; }
+.svc-block:last-child { border-bottom: 0; }
 .svc-block { display: grid; grid-template-columns: minmax(110px, 0.5fr) minmax(0, 1.6fr) minmax(0, 1.2fr); gap: clamp(20px, 3vw, 48px); padding: clamp(28px, 3.4vw, 48px) 0; border-bottom: 1px solid var(--line-ink); position: relative; isolation: isolate; }
 .svc-block::before { content: ''; position: absolute; inset: 0 calc(var(--gutter) * -1); background: var(--ink); transform: scaleY(0); transform-origin: bottom; transition: transform 0.6s cubic-bezier(0.7, 0, 0.2, 1); z-index: -1; }
 .svc-block.flip { grid-template-columns: minmax(110px, 0.5fr) minmax(0, 1.2fr) minmax(0, 1.6fr); }
