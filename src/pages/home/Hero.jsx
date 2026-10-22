@@ -35,7 +35,7 @@ export function Hero() {
         </svg>
       </div>
 
-      <div className="solid">
+      <div className="hero-solid">
         <p className="hero-sub fade" style={{ '--d': '1.4s' }}>
           Web &amp; Software
           <br />
