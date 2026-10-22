@@ -361,7 +361,7 @@ footer.site { border-top: 1px solid var(--line); padding-block: 56px 32px; displ
 .foot-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; padding-bottom: 48px; border-bottom: 1px solid var(--line); }
 .foot-cta p { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(30px, 4.4vw, 64px); line-height: 1; letter-spacing: -0.05em; }
 .foot-top { display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)); gap: 32px; }
-.foot-top h4 { margin: 0 0 14px; font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); }
+.foot-top h2 { margin: 0 0 14px; font-family: var(--mono); font-weight: 500; font-size: 12px; line-height: 1.4; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); }
 .foot-top ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .foot-top a:hover { color: var(--mute); }
 .foot-brand p { margin: 14px 0 0; color: var(--mute); max-width: 34ch; }

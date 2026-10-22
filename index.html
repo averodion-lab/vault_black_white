@@ -11,10 +11,13 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <!-- Fonts load without blocking first paint; text shows in the fallback font for a moment -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
     <!-- Cookieless analytics: no consent banner needed. Sign up at plausible.io and add vaultwebsiteagency.com as a site to start collecting data. -->
     <script defer data-domain="vaultwebsiteagency.com" src="https://plausible.io/js/script.js"></script>
-    <title>Vault Development</title>
+    <title>Vault Development | Web Design & AI Development Agency</title>
   </head>
   <body>
     <div id="root"></div>

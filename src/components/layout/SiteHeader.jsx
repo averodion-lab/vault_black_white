@@ -52,7 +52,7 @@ export function SiteHeader() {
         className="site-avatar"
         role="img"
         aria-label="Rodion Averianov, founder"
-        style={{ backgroundImage: `url('${asset('/assets/images/team-rodion-averianov.jpg')}')` }}
+        style={{ backgroundImage: `url('${asset('/assets/images/team-rodion-averianov-avatar.webp')}')` }}
       />
 
       <div className={open ? 'menu open' : 'menu'} id="site-menu" role="dialog" aria-modal="true" aria-label="Site menu" aria-hidden={!open}>

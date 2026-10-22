@@ -22,7 +22,7 @@ export function Footer() {
           </div>
         </div>
         <div>
-          <h4>Pages</h4>
+          <h2>Pages</h2>
           <ul>
             {PAGES.map((p) => (
               <li key={p.to}><Link to={p.to}>{p.label}</Link></li>
@@ -30,7 +30,7 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <h4>Services</h4>
+          <h2>Services</h2>
           <ul>
             {SERVICES.map((s) => (
               <li key={s.title}><Link to="/#services">{s.title}</Link></li>
@@ -38,7 +38,7 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <h4>Social</h4>
+          <h2>Social</h2>
           <ul>
             {SOCIALS.map((s) => (
               <li key={s.label}>

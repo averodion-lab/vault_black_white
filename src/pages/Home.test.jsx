@@ -40,8 +40,8 @@ test('renders every homepage section', () => {
 
 test('shows both team members with photos', () => {
   setup()
-  expect(screen.getByAltText('Rodion Averianov')).toHaveAttribute('src', '/assets/images/team-rodion-averianov.jpg')
-  expect(screen.getByAltText('Ryan Grant')).toHaveAttribute('src', '/assets/images/team-ryan-grant.jpg')
+  expect(screen.getByAltText('Rodion Averianov')).toHaveAttribute('src', '/assets/images/team-rodion-averianov.webp')
+  expect(screen.getByAltText('Ryan Grant')).toHaveAttribute('src', '/assets/images/team-ryan-grant.webp')
 })
 
 test('shows the real numbers without an example warning', () => {

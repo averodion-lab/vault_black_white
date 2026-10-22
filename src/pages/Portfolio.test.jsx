@@ -30,7 +30,7 @@ test('live projects link out in a new tab', () => {
   )
   const live = PROJECTS.filter((p) => p.href)
   live.forEach((p) => {
-    const link = screen.getByRole('link', { name: `Visit ${p.title} (opens in a new tab)` })
+    const link = screen.getByRole('link', { name: new RegExp(`Visit ${p.title} \\(opens in a new tab\\)$`) })
     expect(link).toHaveAttribute('href', p.href)
     expect(link).toHaveAttribute('rel', 'noopener noreferrer')
   })

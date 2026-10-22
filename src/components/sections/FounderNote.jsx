@@ -32,14 +32,14 @@ export function FounderNote({ children, tone = 'dark', className }) {
 
   return (
     <figure ref={ref} className={['note', `note-${tone}`, className].filter(Boolean).join(' ')}>
-      <img className="note-avatar" src={founder.photo} alt="" width="56" height="56" loading="lazy" />
+      <img className="note-avatar" src={founder.avatar} alt="" width="56" height="56" loading="lazy" />
       <div className="note-body">
         <figcaption className="note-who">
           <b>{founder.name}</b> <span>{founder.title}</span>
         </figcaption>
         <blockquote className="note-bubble" aria-live="polite">
           {typing ? (
-            <span className="typing" aria-label="Rodion is typing"><i /><i /><i /></span>
+            <span className="typing" role="img" aria-label="Rodion is typing"><i /><i /><i /></span>
           ) : (
             <p>{children}</p>
           )}

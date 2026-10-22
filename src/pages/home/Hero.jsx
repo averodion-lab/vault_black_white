@@ -22,8 +22,8 @@ export function Hero() {
 
       {/* difference layer: reads black over the white plasma, white over the black */}
       <div className="dx">
-        <p className="hero-note fade" style={{ '--d': '1s' }}>Reach out to start your project</p>
-        <p className="hero-tagline fade" style={{ '--d': '1.25s' }}>Websites That Bring You Customers</p>
+        <p className="hero-note fade" style={{ '--d': '0.55s' }}>Reach out to start your project</p>
+        <p className="hero-tagline fade" style={{ '--d': '0.8s' }}>Websites That Bring You Customers</p>
         <h1 className="wordmark" aria-label="Vault">
           {'Vault'.split('').map((ch, i) => (
             <span key={i} style={{ '--i': i }} aria-hidden="true">{ch}</span>
@@ -36,19 +36,19 @@ export function Hero() {
       </div>
 
       <div className="hero-solid">
-        <p className="hero-sub fade" style={{ '--d': '1.4s' }}>
+        <p className="hero-sub fade" style={{ '--d': '0.95s' }}>
           Web &amp; Software
           <br />
           Development Agency
         </p>
-        <ul className="hero-svc fade" style={{ '--d': '1.2s' }} aria-label="What we build">
+        <ul className="hero-svc fade" style={{ '--d': '0.75s' }} aria-label="What we build">
           {HERO_SERVICES.map((s, i) => (
             <li key={s} className={i === active ? 'on' : undefined} onMouseEnter={() => setActive(i)}>
               {s}
             </li>
           ))}
         </ul>
-        <Link className="hero-cta fade" to="/contact" style={{ '--d': '1.35s' }}>
+        <Link className="hero-cta fade" to="/contact" style={{ '--d': '0.9s' }}>
           Get a free quote <b aria-hidden="true">→</b>
         </Link>
       </div>

@@ -179,14 +179,15 @@ export const PROJECTS = [
 
 export const TEAM = [
   {
-    photo: asset('/assets/images/team-rodion-averianov.jpg'),
+    photo: asset('/assets/images/team-rodion-averianov.webp'),
+    avatar: asset('/assets/images/team-rodion-averianov-avatar.webp'),
     name: 'Rodion Averianov',
     title: 'Founder & Lead Software Developer',
     plate: 'Founder',
     bio: "Rodion founded Vault Development to bring enterprise-level software engineering to businesses that usually can't access it. A GCSU Information Systems graduate with a Computer Science minor, he leads every technical build personally — from architecture to the last line of code — so nothing ships that he wouldn't put his own name on.",
   },
   {
-    photo: asset('/assets/images/team-ryan-grant.jpg'),
+    photo: asset('/assets/images/team-ryan-grant.webp'),
     name: 'Ryan Grant',
     title: 'Digital Marketing Specialist',
     plate: 'Marketing',

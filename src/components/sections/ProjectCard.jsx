@@ -17,8 +17,9 @@ export function ProjectCard({ project, short = false, delay = 0 }) {
   return (
     <Reveal as="article" className="proj" delay={delay}>
       {href ? (
-        <a href={href} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${title} (opens in a new tab)`}>
+        <a href={href} target="_blank" rel="noopener noreferrer">
           {shot}
+          <span className="sr-only">Visit {title} (opens in a new tab)</span>
         </a>
       ) : (
         shot
