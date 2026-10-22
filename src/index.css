@@ -454,14 +454,14 @@ html.lenis, html.lenis body { scroll-behavior: auto !important; }
 /* The last row's own padding ends the section; extra section padding plus a closing rule read as an empty band */
 #services.sec { padding-bottom: 0; }
 .svc-block:last-child { border-bottom: 0; }
-.svc-block { display: grid; grid-template-columns: minmax(110px, 0.5fr) minmax(0, 1.6fr) minmax(0, 1.2fr); gap: clamp(20px, 3vw, 48px); padding: clamp(28px, 3.4vw, 48px) 0; border-bottom: 1px solid var(--line-ink); position: relative; isolation: isolate; }
+.svc-block { display: grid; grid-template-columns: minmax(110px, 0.5fr) minmax(0, 1.6fr) minmax(0, 1.2fr); gap: clamp(20px, 3vw, 48px); padding: clamp(28px, 3.4vw, 48px) 0; border-bottom: 1px solid var(--line-ink); position: relative; isolation: isolate; -webkit-tap-highlight-color: transparent; }
 .svc-block::before { content: ''; position: absolute; inset: 0 calc(var(--gutter) * -1); background: var(--ink); transform: scaleY(0); transform-origin: bottom; transition: transform 0.6s cubic-bezier(0.7, 0, 0.2, 1); z-index: -1; }
 .svc-block.flip { grid-template-columns: minmax(110px, 0.5fr) minmax(0, 1.2fr) minmax(0, 1.6fr); }
 .svc-block.flip .svc-main { order: 3; }
 .svc-block.flip .svc-side { order: 2; }
 .svc-num { display: grid; gap: 6px; align-content: start; }
 #services .svc-num .mono, #services .built-for .mono { color: #45454c; }
-#services .svc-block:hover .svc-num .mono, #services .svc-block:hover .built-for .mono { color: #dcdce1; }
+#services .svc-block.open .svc-num .mono, #services .svc-block.open .built-for .mono { color: #dcdce1; }
 .svc-num .mono:first-of-type { font-size: 15px; color: var(--ink); }
 /* isometric icons: assembled at rest; a container sets --e (explode) and --lo (labels) on hover */
 .iso-icon { display: block; max-width: 100%; height: auto; overflow: visible; }
@@ -473,7 +473,7 @@ html.lenis, html.lenis body { scroll-behavior: auto !important; }
 @keyframes iso-bob { 50% { transform: translateY(-1.8px); } }
 /* services: light objects, going dark with the row */
 .svc-icon { --top: #fbfbfc; --left: #c6c6cc; --right: #85858d; --line: #0a0a0c; --screen: #f1f1f3; --shadow: rgba(10, 10, 12, 0.1); max-width: calc(100% + clamp(20px, 3vw, 48px)); margin-bottom: 14px; }
-.svc-block:hover .svc-icon { --e: 1; --lo: 1; --top: #3a3a40; --left: #1d1d21; --right: #0e0e10; --line: #f2f2f4; --screen: #141417; --shadow: rgba(0, 0, 0, 0.45); }
+.svc-block.open .svc-icon { --e: 1; --lo: 1; --top: #3a3a40; --left: #1d1d21; --right: #0e0e10; --line: #f2f2f4; --screen: #141417; --shadow: rgba(0, 0, 0, 0.45); }
 .svc-main { display: grid; gap: 14px; align-content: start; }
 .svc-main h3 { font-size: clamp(30px, 3.8vw, 58px); line-height: 0.98; transition: transform 0.55s var(--ease); }
 .svc-main p { margin: 0; color: #36363c; font-size: clamp(18px, 1.4vw, 20px); line-height: 1.5; max-width: 48ch; }
@@ -482,12 +482,12 @@ html.lenis, html.lenis body { scroll-behavior: auto !important; }
 .chips li { border: 1px solid var(--line-ink); border-radius: 999px; padding: 7px 15px; font-size: 15px; font-weight: 500; transition: border-color 0.4s, background 0.4s; }
 .built-for { margin: 0; display: grid; gap: 6px; font-size: 16px; }
 .built-for a { font-weight: 600; text-decoration: underline; text-decoration-color: rgba(10, 10, 12, 0.3); text-underline-offset: 4px; }
-.svc-block:hover::before { transform: scaleY(1); }
-.svc-block:hover, .svc-block:hover .svc-num .mono:first-of-type { color: var(--paper); }
-.svc-block:hover .svc-main p, .svc-block:hover .mono { color: #dcdce1; }
-.svc-block:hover .chips li { border-color: rgba(255, 255, 255, 0.25); }
-.svc-block:hover .built-for a { text-decoration-color: rgba(255, 255, 255, 0.4); }
-.svc-block:hover .svc-main h3 { transform: translateX(12px); }
+.svc-block.open::before { transform: scaleY(1); }
+.svc-block.open, .svc-block.open .svc-num .mono:first-of-type { color: var(--paper); }
+.svc-block.open .svc-main p, .svc-block.open .mono { color: #dcdce1; }
+.svc-block.open .chips li { border-color: rgba(255, 255, 255, 0.25); }
+.svc-block.open .built-for a { text-decoration-color: rgba(255, 255, 255, 0.4); }
+.svc-block.open .svc-main h3 { transform: translateX(12px); }
 
 /* big Google rating */
 .rating { display: grid; gap: 4px; justify-items: start; }
