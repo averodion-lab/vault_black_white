@@ -391,6 +391,8 @@ footer.site { border-top: 1px solid var(--line); padding-block: 56px 32px; displ
   .charts { gap: 56px; }
   .chart .plot { height: auto; min-height: 240px; }
   .step + .step { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); margin-top: 32px; }
+  /* stacked steps don't need the desktop row height; the drawings fit in ~160px even when spread apart */
+  .step-art { height: 160px; }
   .work { grid-template-columns: minmax(0, 1fr); }
   .work .proj:nth-child(n) { grid-column: auto; margin-top: 0; }
   .grid-list { grid-template-columns: minmax(0, 1fr); }
@@ -420,6 +422,13 @@ footer.site { border-top: 1px solid var(--line); padding-block: 56px 32px; displ
   .stats, .team, .form .two { grid-template-columns: minmax(0, 1fr); }
   .stat + .stat { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); margin-top: 24px; }
   .member + .member { margin-top: 24px; }
+  /* comparison: one card per feature instead of a table wider than the screen */
+  table.cmp { min-width: 0; }
+  .cmp thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .cmp tbody tr { display: grid; grid-template-columns: 112px auto; justify-content: start; column-gap: 20px; row-gap: 12px; padding: 18px 0; border-bottom: 1px solid var(--line-ink); }
+  .cmp tbody th { grid-column: 1 / -1; padding: 0; border: 0; }
+  .cmp td { width: auto; padding: 0; border: 0; display: flex; align-items: center; gap: 10px; }
+  .cmp td::before { content: attr(data-label); font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute-ink); }
 }
 @media (max-width: 420px) {
   .chart .plot { flex-wrap: wrap; }

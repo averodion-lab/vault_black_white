@@ -26,8 +26,8 @@ export function Compare() {
             {COMPARE.map((r) => (
               <tr key={r.feat}>
                 <th scope="row">{r.feat}</th>
-                <td><span className="yes" role="img" aria-label="Yes">✓</span></td>
-                <td>{THEM[r.them]}</td>
+                <td data-label="Vault"><span className="yes" role="img" aria-label="Yes">✓</span></td>
+                <td data-label="Other agencies">{THEM[r.them]}</td>
               </tr>
             ))}
           </tbody>
