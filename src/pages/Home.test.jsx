@@ -35,7 +35,6 @@ test('renders every homepage section', () => {
     'Every project is custom-quoted',
     'What our clients say',
     'Quick answers',
-    "Let's build something great.",
   ].forEach((name) => expect(screen.getByRole('heading', { name })).toBeInTheDocument())
 })
 

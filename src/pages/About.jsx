@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 import { PageHero } from '@/components/sections/PageHero'
 import { Team } from '@/components/sections/Team'
-import { CtaSection } from '@/components/sections/CtaSection'
 import { Reveal } from '@/components/ui/Reveal'
 import { CountUp } from '@/components/ui/CountUp'
 import { asset } from '@/lib/utils'
@@ -148,7 +147,6 @@ export function About() {
         </div>
       </section>
 
-      <CtaSection title="Let's build something together." eyebrow="We'd love to hear about your business" />
     </>
   )
 }

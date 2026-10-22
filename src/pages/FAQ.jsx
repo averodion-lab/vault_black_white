@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 import { PageHero } from '@/components/sections/PageHero'
 import { FaqList } from '@/components/sections/FaqList'
-import { CtaSection } from '@/components/sections/CtaSection'
 import { Reveal } from '@/components/ui/Reveal'
 import { FounderNote } from '@/components/sections/FounderNote'
 import { FAQ_CATEGORIES } from '@/data/site'
@@ -80,7 +79,6 @@ export function FAQ() {
           </div>
         </div>
       </section>
-      <CtaSection title="Still have questions?" eyebrow="Free consultation · No commitment" />
     </>
   )
 }

@@ -10,7 +10,6 @@ import { Compare } from './home/Compare'
 import { Pricing } from './home/Pricing'
 import { Reviews } from './home/Reviews'
 import { FaqMini } from './home/FaqMini'
-import { CtaSection } from '@/components/sections/CtaSection'
 
 const avgRating = (TESTIMONIALS.reduce((sum, t) => sum + t.rating, 0) / TESTIMONIALS.length).toFixed(1)
 
@@ -108,7 +107,6 @@ export function Home() {
       <Pricing />
       <Reviews />
       <FaqMini />
-      <CtaSection />
     </>
   )
 }

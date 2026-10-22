@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 import { PageHero } from '@/components/sections/PageHero'
 import { ProjectCard } from '@/components/sections/ProjectCard'
-import { CtaSection } from '@/components/sections/CtaSection'
 import { FounderNote } from '@/components/sections/FounderNote'
 import { PROJECTS } from '@/data/site'
 
@@ -66,7 +65,6 @@ export function Portfolio() {
           ))}
         </div>
       </section>
-      <CtaSection title="Want results like these?" eyebrow="Your project could be next" />
     </>
   )
 }
