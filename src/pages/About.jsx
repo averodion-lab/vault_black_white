@@ -66,6 +66,7 @@ export function About() {
       />
 
       <section className="sec wrap paper">
+        <h2 className="sr-only">Our story</h2>
         <Reveal as="blockquote" className="quote">
           “Every business deserves a digital presence that <em>actually works</em> for them.”
         </Reveal>

@@ -55,6 +55,7 @@ export function Portfolio() {
         lead="Custom websites, AI systems, and digital products built for real businesses."
       />
       <section className="sec wrap">
+        <h2 className="sr-only">Projects</h2>
         <FounderNote className="note-intro">
           Every project here was custom-built for a real business. Ask me about any of them and I&apos;ll walk you
           through how we did it.

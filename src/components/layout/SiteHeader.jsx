@@ -70,7 +70,7 @@ export function SiteHeader() {
         </nav>
         <div className="meta mono">
           <span>{CONTACT.location} · Serving nationwide</span>
-          <span>{CONTACT.phone}</span>
+          <a href={CONTACT.phoneHref} tabIndex={open ? 0 : -1}>{CONTACT.phone}</a>
         </div>
       </div>
     </>

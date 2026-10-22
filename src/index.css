@@ -74,7 +74,7 @@ h3 { font-family: var(--display); font-weight: 600; letter-spacing: -0.03em; }
 .menu { position: fixed; inset: 0; z-index: 70; background: rgba(5, 5, 7, 0.95); backdrop-filter: blur(16px); display: grid; align-content: center; padding-inline: var(--gutter); opacity: 0; visibility: hidden; transition: opacity 0.4s, visibility 0.4s; }
 .menu.open { opacity: 1; visibility: visible; }
 .menu nav { display: grid; gap: 4px; }
-.menu nav a { font-family: var(--display); font-weight: 700; font-size: clamp(44px, 9vw, 120px); line-height: 1; letter-spacing: -0.05em; color: rgba(242, 242, 244, 0.3); transition: color 0.3s, transform 0.5s var(--ease); transform: translateY(20px); justify-self: start; }
+.menu nav a { font-family: var(--display); font-weight: 700; font-size: clamp(44px, 9vw, 120px); line-height: 1; letter-spacing: -0.05em; color: rgba(242, 242, 244, 0.55); transition: color 0.3s, transform 0.5s var(--ease); transform: translateY(20px); justify-self: start; }
 .menu.open nav a { transform: none; }
 .menu nav a:hover, .menu nav a[aria-current='page'] { color: var(--fg); }
 .menu .close { position: absolute; top: 32px; right: var(--gutter); width: 52px; height: 52px; border: 0; background: none; color: var(--fg); cursor: pointer; display: grid; place-items: center; }
@@ -341,10 +341,11 @@ table.cmp { width: 100%; min-width: 560px; border-collapse: collapse; font-size:
 .field { display: grid; gap: 8px; }
 .field label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); }
 .field input, .field select, .field textarea { width: 100%; background: transparent; border: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.25); color: var(--fg); font: inherit; font-size: 18px; padding: 10px 0; border-radius: 0; transition: border-color 0.3s; }
-.field select { background: var(--void); }
+.field select { appearance: none; -webkit-appearance: none; padding-right: 28px; cursor: pointer; background: var(--void) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23f2f2f4' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 4px center; }
 .field textarea { resize: vertical; min-height: 120px; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--fg); }
-.field input::placeholder, .field textarea::placeholder { color: #55555c; }
+.field input::placeholder, .field textarea::placeholder, .field select:has(option[value=""]:checked) { color: #55555c; }
+.field select option { color: var(--fg); }
 .form-error { margin: 0; color: var(--fg); background: rgba(255, 255, 255, 0.06); border-left: 2px solid var(--fg); padding: 10px 14px; }
 .sent { display: grid; gap: 18px; justify-items: start; padding: 32px 0; }
 .sent .check { width: 56px; height: 56px; border-radius: 50%; background: var(--fg); color: var(--ink); display: grid; place-items: center; font-size: 26px; }
@@ -513,6 +514,10 @@ html.lenis, html.lenis body { scroll-behavior: auto !important; }
 .note-who span { color: var(--mute); margin-left: 6px; }
 .note-bubble { margin: 0; padding: 16px 20px; border-radius: 4px 20px 20px 20px; background: var(--fg); color: var(--ink); font-size: 17px; line-height: 1.45; min-height: 56px; display: flex; align-items: center; box-shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.6); }
 .note-bubble p { margin: 0; }
+/* tone="light" (class built in FounderNote) for notes on paper sections */
+.note-light .note-avatar { border-color: var(--ink); }
+.note-light .note-who span { color: var(--mute-ink); }
+.note-light .note-bubble { background: var(--ink); color: var(--paper); }
 .typing { display: inline-flex; gap: 5px; }
 .typing i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: 0.35; animation: typing 1s ease-in-out infinite; }
 .typing i:nth-child(2) { animation-delay: 0.15s; } .typing i:nth-child(3) { animation-delay: 0.3s; }
