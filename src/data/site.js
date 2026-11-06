@@ -5,7 +5,7 @@ export const CONTACT = {
   email: 'vaultdevelopmentagency@gmail.com',
   phone: '678-755-6900',
   phoneHref: 'tel:6787556900',
-  location: 'Middle Georgia',
+  location: 'Atlanta, Georgia',
 }
 
 export const SOCIALS = [
@@ -33,14 +33,6 @@ export const SERVICES = [
     projects: ['Ramzef Construction', 'Tower Tigers Crew LLC', 'Trusted Roofing Co.', 'Seva Photos', "Jacey's Moving & Junk Removal"],
   },
   {
-    title: 'AI Implementation',
-    tag: 'AI',
-    icon: 'ai',
-    body: 'Intelligent chatbots, workflow automation, and AI tools integrated directly into your business to save time and boost revenue.',
-    tags: ['Chatbots', 'Workflow automation', 'Lead follow-up', 'Custom AI tools'],
-    projects: ['LeadEngine'],
-  },
-  {
     title: 'App Development',
     tag: 'Mobile',
     icon: 'app',
@@ -54,6 +46,14 @@ export const SERVICES = [
     icon: 'software',
     body: 'Custom software tools, internal dashboards, and business automation systems built for the way your team actually works.',
     tags: ['Dashboards', 'Internal tools', 'Automation', 'Integrations'],
+    projects: ['LeadEngine'],
+  },
+  {
+    title: 'AI Implementation',
+    tag: 'AI',
+    icon: 'ai',
+    body: 'Intelligent chatbots, workflow automation, and AI tools integrated directly into your business to save time and boost revenue.',
+    tags: ['Chatbots', 'Workflow automation', 'Lead follow-up', 'Custom AI tools'],
     projects: ['LeadEngine'],
   },
   {
@@ -184,7 +184,7 @@ export const TEAM = [
     name: 'Rodion Averianov',
     title: 'Founder & Lead Software Developer',
     plate: 'Founder',
-    bio: "Rodion founded Vault Development to bring enterprise-level software engineering to businesses that usually can't access it. A GCSU Information Systems graduate with a Computer Science minor, he leads every technical build personally — from architecture to the last line of code — so nothing ships that he wouldn't put his own name on.",
+    bio: "Rodion founded Zunova Digital to bring enterprise-level software engineering to businesses that usually can't access it. A GCSU Information Systems graduate with a Computer Science minor, he leads every technical build personally — from architecture to the last line of code — so nothing ships that he wouldn't put his own name on.",
   },
   {
     photo: asset('/assets/images/team-ryan-grant.webp'),
@@ -252,12 +252,12 @@ export const FAQ_CATEGORIES = [
     name: 'General',
     items: [
       {
-        q: 'What exactly does Vault Development do?',
-        a: 'Vault Development builds custom websites, web applications, mobile apps, and AI-powered tools for businesses of all sizes. We handle everything from design and development to deployment and ongoing maintenance — all under one roof.',
+        q: 'What exactly does Zunova Digital do?',
+        a: 'Zunova Digital builds custom websites, web applications, mobile apps, and AI-powered tools for businesses of all sizes. We handle everything from design and development to deployment and ongoing maintenance — all under one roof.',
       },
       {
         q: 'Where are you located and do you work remotely?',
-        a: "We're based in Middle Georgia, but we work with clients nationwide. Almost everything we do is handled remotely via video calls, email, and project management tools.",
+        a: "We're based in Atlanta, Georgia, but we work with clients nationwide. Almost everything we do is handled remotely via video calls, email, and project management tools.",
       },
       {
         q: 'What size businesses do you work with?',
@@ -335,6 +335,73 @@ export const FAQ_CATEGORIES = [
         q: 'What if something breaks after launch?',
         a: "If it's due to our work, we fix it at no charge. Maintenance plan clients get priority response times.",
       },
+    ],
+  },
+]
+/** How one lead moves from a search to a review, per kind of business. Illustrative examples, not client data. */
+export const JOURNEY_STEPS = [
+  { icon: 'search', label: 'Website & SEO' },
+  { icon: 'bot', label: 'AI assistant' },
+  { icon: 'calendar', label: 'Automation' },
+  { icon: 'star', label: 'Reviews' },
+]
+
+export const JOURNEYS = [
+  {
+    id: 'roofing',
+    label: 'Roofing',
+    chat: [
+      { step: 0, from: 'sys', text: 'New lead from Google search' },
+      { step: 1, from: 'them', text: 'Hi, do you fix roof leaks? Water is coming in by the chimney.' },
+      { step: 1, from: 'us', text: 'Sorry to hear that! Yes, we do. Is it leaking right now, and what’s the address?' },
+      { step: 2, from: 'them', text: 'A little. 214 Pine St, Atlanta. Tomorrow morning?' },
+      { step: 2, from: 'booked', text: '✓ Booked · Tomorrow 8:30 AM' },
+      { step: 3, from: 'us', text: 'Thanks for choosing us! Would you leave a quick Google review?' },
+      { step: 3, from: 'them', text: 'Done ★★★★★' },
+    ],
+    cards: [
+      { title: 'Found on Google', sub: '"roof leak repair near me"' },
+      { title: 'Quote request answered', sub: 'AI replied in 30 seconds, 9:41 PM' },
+      { title: 'Inspection booked', sub: 'Tomorrow 8:30 AM, on your calendar' },
+      { title: 'Review requested', sub: 'Thank-you text sent after the job' },
+    ],
+  },
+  {
+    id: 'moving',
+    label: 'Moving',
+    chat: [
+      { step: 0, from: 'sys', text: 'New lead from Google search' },
+      { step: 1, from: 'them', text: 'Hi! Need movers for a 2-bed apartment next Saturday.' },
+      { step: 1, from: 'us', text: 'Happy to help! What are the pickup and drop-off addresses?' },
+      { step: 2, from: 'them', text: 'Midtown to Marietta. Morning works best.' },
+      { step: 2, from: 'booked', text: '✓ Booked · Saturday 9:00 AM' },
+      { step: 3, from: 'us', text: 'Thanks for moving with us! Would you leave a quick review?' },
+      { step: 3, from: 'them', text: 'Of course ★★★★★' },
+    ],
+    cards: [
+      { title: 'Found on Google', sub: '"local movers near me"' },
+      { title: 'Move details collected', sub: '2-bed apartment, date and address' },
+      { title: 'Move booked', sub: 'Saturday 9 AM, reminder scheduled' },
+      { title: 'Review requested', sub: 'Thank-you text sent after the move' },
+    ],
+  },
+  {
+    id: 'construction',
+    label: 'Construction',
+    chat: [
+      { step: 0, from: 'sys', text: 'New lead from Google search' },
+      { step: 1, from: 'them', text: 'Looking for a quote on a home addition, about 400 sq ft.' },
+      { step: 1, from: 'us', text: 'Great project! What budget and timeline do you have in mind?' },
+      { step: 2, from: 'them', text: 'Around $80k, starting in spring.' },
+      { step: 2, from: 'booked', text: '✓ Site visit · Thursday 2:00 PM' },
+      { step: 3, from: 'us', text: 'Your estimate is ready. Any questions before we schedule?' },
+      { step: 3, from: 'them', text: 'Looks great, let’s go ahead!' },
+    ],
+    cards: [
+      { title: 'Found on Google', sub: '"home addition contractor"' },
+      { title: 'Project inquiry qualified', sub: 'Budget and timeline captured by AI' },
+      { title: 'Site visit booked', sub: 'Thursday 2 PM, on your calendar' },
+      { title: 'Estimate followed up', sub: 'Automatic nudge after 2 days' },
     ],
   },
 ]

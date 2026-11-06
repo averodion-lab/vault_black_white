@@ -24,7 +24,10 @@ export function Reviews() {
           <span className="stars-5" aria-hidden="true">★★★★★</span>
           <span className="mono muted" aria-hidden="true">{count} reviews</span>
         </div>
-        <h2>What our clients say</h2>
+        <div>
+          <h2>{count} reviews. {score.toFixed(1)} stars.</h2>
+          <p className="reviews-sub">Every one written by a real client on Google.</p>
+        </div>
       </Reveal>
       <div className="marquee">
         <div className="track">

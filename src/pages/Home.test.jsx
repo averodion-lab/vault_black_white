@@ -1,3 +1,4 @@
+import userEvent from '@testing-library/user-event'
 import { render, screen, within } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
@@ -16,8 +17,8 @@ function setup() {
 
 test('renders the hero with the wordmark, tagline and quote CTA', () => {
   setup()
-  expect(screen.getByRole('heading', { level: 1, name: 'Vault' })).toBeInTheDocument()
-  expect(screen.getByText('Websites That Bring You Customers')).toBeInTheDocument()
+  expect(screen.getByRole('heading', { level: 1, name: 'Zunova' })).toBeInTheDocument()
+  expect(screen.getByText('Websites, Apps & AI That Bring You Customers')).toBeInTheDocument()
   expect(screen.getByRole('link', { name: /get a free quote/i })).toHaveAttribute('href', '/contact')
   const svc = screen.getByRole('list', { name: 'What we build' })
   expect(within(svc).getAllByRole('listitem')).toHaveLength(5)
@@ -28,12 +29,13 @@ test('renders every homepage section', () => {
   ;[
     "Who you'll work with",
     'Custom services for your business',
+    'From first search to booked job. One team runs it all.',
     'From first call to launch day',
     "What we've built so far",
     'Built for real businesses',
-    'Vault vs. the rest',
+    'Zunova vs. the rest',
     'Every project is custom-quoted',
-    'What our clients say',
+    '30 reviews. 4.9 stars.',
     'Quick answers',
   ].forEach((name) => expect(screen.getByRole('heading', { name })).toBeInTheDocument())
 })
@@ -73,4 +75,16 @@ test('each service lists what it includes, and links to projects built with it',
 test('shows the Google rating', () => {
   setup()
   expect(screen.getByLabelText(/rated 4\.9 out of 5 on google from 30 reviews/i)).toBeInTheDocument()
+})
+
+test('the lead journey switches between kinds of business and links to contact', async () => {
+  setup()
+  const user = userEvent.setup()
+  expect(screen.getByRole('tab', { name: 'Roofing' })).toHaveAttribute('aria-selected', 'true')
+  expect(screen.getByText('Inspection booked')).toBeInTheDocument()
+  await user.click(screen.getByRole('tab', { name: 'Moving' }))
+  expect(screen.getByRole('tab', { name: 'Moving' })).toHaveAttribute('aria-selected', 'true')
+  expect(screen.getByText('Move booked')).toBeInTheDocument()
+  expect(screen.queryByText('Inspection booked')).not.toBeInTheDocument()
+  expect(screen.getByRole('link', { name: /set this up for my business/i })).toHaveAttribute('href', '/contact')
 })

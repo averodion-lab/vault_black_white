@@ -11,7 +11,7 @@ test('renders a heading, a link home, and quick links', () => {
       </MemoryRouter>
     </HelmetProvider>
   )
-  expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Locked.')
+  expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Lost in space.')
   expect(screen.getByRole('link', { name: /back to home/i })).toHaveAttribute('href', '/')
   ;['Portfolio', 'About', 'Contact'].forEach((l) => expect(screen.getByRole('link', { name: l })).toBeInTheDocument())
 })

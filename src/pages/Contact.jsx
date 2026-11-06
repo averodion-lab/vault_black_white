@@ -13,19 +13,34 @@ const RL_WINDOW_MS = 3600000
 const RL_MAX = 3
 const RL_COOLDOWN_MS = 60000
 
+/** Trim to length and drop angle brackets; keep apostrophes and quotes (O'Brien, "ASAP"). */
 function sanitize(str, maxLen = 500) {
-  return str.replace(/[<>"'`]/g, '').substring(0, maxLen)
+  return str.replace(/[<>]/g, '').substring(0, maxLen)
+}
+
+// Storage can be blocked (private modes, in-app browsers); rate limiting must never stop a real enquiry.
+function readHistory(now) {
+  try {
+    const hist = JSON.parse(window.localStorage.getItem(RL_HIST_KEY) || '[]')
+    return Array.isArray(hist) ? hist.filter((ts) => now - ts < RL_WINDOW_MS) : []
+  } catch {
+    return []
+  }
 }
 
 function isRateLimited() {
   const now = Date.now()
-  const last = parseInt(window.localStorage.getItem(RL_LAST_KEY) || '0', 10)
+  let last = 0
+  try {
+    last = parseInt(window.localStorage.getItem(RL_LAST_KEY) || '0', 10) || 0
+  } catch {
+    return null
+  }
   if (now - last < RL_COOLDOWN_MS) {
     const wait = Math.ceil((RL_COOLDOWN_MS - (now - last)) / 1000)
     return `Please wait ${wait} seconds before submitting again.`
   }
-  const hist = JSON.parse(window.localStorage.getItem(RL_HIST_KEY) || '[]').filter((ts) => now - ts < RL_WINDOW_MS)
-  if (hist.length >= RL_MAX) {
+  if (readHistory(now).length >= RL_MAX) {
     return 'Too many submissions. Please try again later or email us directly.'
   }
   return null
@@ -33,10 +48,12 @@ function isRateLimited() {
 
 function recordSubmission() {
   const now = Date.now()
-  window.localStorage.setItem(RL_LAST_KEY, now.toString())
-  const hist = JSON.parse(window.localStorage.getItem(RL_HIST_KEY) || '[]').filter((ts) => now - ts < RL_WINDOW_MS)
-  hist.push(now)
-  window.localStorage.setItem(RL_HIST_KEY, JSON.stringify(hist))
+  try {
+    window.localStorage.setItem(RL_LAST_KEY, now.toString())
+    window.localStorage.setItem(RL_HIST_KEY, JSON.stringify([...readHistory(now), now]))
+  } catch {
+    // ignore: storage unavailable
+  }
 }
 
 const SERVICES = [
@@ -130,41 +147,41 @@ export function Contact() {
   return (
     <>
       <Helmet>
-        <title>Contact Us | Get a Free Web Design Quote | Vault Development</title>
+        <title>Contact Us | Get a Free Web Design Quote | Zunova Digital</title>
         <meta
           name="description"
-          content="Get in touch with Vault Development. Tell us about your project and we'll respond within 24 hours. No pressure, no commitment."
+          content="Get in touch with Zunova Digital. Tell us about your project and we'll respond within 24 hours. No pressure, no commitment."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Vault Development" />
-        <meta property="og:title" content="Contact | Vault Development" />
+        <meta property="og:site_name" content="Zunova Digital" />
+        <meta property="og:title" content="Contact | Zunova Digital" />
         <meta
           property="og:description"
-          content="Get in touch with Vault Development. Tell us about your project and we'll respond within 24 hours."
+          content="Get in touch with Zunova Digital. Tell us about your project and we'll respond within 24 hours."
         />
-        <meta property="og:image" content="https://vaultwebsiteagency.com/og-image.png" />
-        <meta property="og:url" content="https://vaultwebsiteagency.com/contact" />
+        <meta property="og:image" content="https://zunovadigital.com/og-image.png" />
+        <meta property="og:url" content="https://zunovadigital.com/contact" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact | Vault Development" />
+        <meta name="twitter:title" content="Contact | Zunova Digital" />
         <meta
           name="twitter:description"
-          content="Get in touch with Vault Development. Tell us about your project and we'll respond within 24 hours."
+          content="Get in touch with Zunova Digital. Tell us about your project and we'll respond within 24 hours."
         />
-        <meta name="twitter:image" content="https://vaultwebsiteagency.com/og-image.png" />
-        <link rel="canonical" href="https://vaultwebsiteagency.com/contact" />
+        <meta name="twitter:image" content="https://zunovadigital.com/og-image.png" />
+        <link rel="canonical" href="https://zunovadigital.com/contact" />
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'ContactPage',
-            name: 'Contact Vault Development',
-            description: "Get in touch with Vault Development. Tell us about your project and we'll respond within 24 hours.",
-            url: 'https://vaultwebsiteagency.com/contact',
+            name: 'Contact Zunova Digital',
+            description: "Get in touch with Zunova Digital. Tell us about your project and we'll respond within 24 hours.",
+            url: 'https://zunovadigital.com/contact',
             mainEntity: {
               '@type': 'LocalBusiness',
-              name: 'Vault Development',
+              name: 'Zunova Digital',
               telephone: '+16787556900',
               email: 'vaultdevelopmentagency@gmail.com',
-              address: { '@type': 'PostalAddress', addressLocality: 'Middle Georgia', addressRegion: 'GA', addressCountry: 'US' },
+              address: { '@type': 'PostalAddress', addressLocality: 'Atlanta', addressRegion: 'GA', addressCountry: 'US' },
               openingHoursSpecification: {
                 '@type': 'OpeningHoursSpecification',
                 dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
@@ -187,7 +204,7 @@ export function Contact() {
             <dl className="contact-info" style={{ marginTop: 40 }}>
               <div>
                 <dt className="mono">Location</dt>
-                <dd>Middle Georgia<br />Serving clients nationwide</dd>
+                <dd>Atlanta, Georgia<br />Serving clients nationwide</dd>
               </div>
               <div>
                 <dt className="mono">Email</dt>
@@ -207,7 +224,7 @@ export function Contact() {
             </FounderNote>
           </Reveal>
 
-          <Reveal delay={120}>
+          <Reveal delay={120} className="frame form-frame">
             {sent ? (
               <div className="sent" role="status">
                 <span className="check" aria-hidden="true">✓</span>
@@ -278,6 +295,10 @@ export function Contact() {
                 </button>
               </form>
             )}
+            <div className="plate" aria-hidden="true">
+              <b>Project brief</b>
+              <span>Reply within 24 hours</span>
+            </div>
           </Reveal>
         </div>
       </section>

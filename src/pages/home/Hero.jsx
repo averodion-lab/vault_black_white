@@ -23,9 +23,9 @@ export function Hero() {
       {/* difference layer: reads black over the white plasma, white over the black */}
       <div className="dx">
         <p className="hero-note fade" style={{ '--d': '0.55s' }}>Reach out to start your project</p>
-        <p className="hero-tagline fade" style={{ '--d': '0.8s' }}>Websites That Bring You Customers</p>
-        <h1 className="wordmark" aria-label="Vault">
-          {'Vault'.split('').map((ch, i) => (
+        <p className="hero-tagline fade" style={{ '--d': '0.8s' }}>Websites, Apps &amp; AI That Bring You Customers</p>
+        <h1 className="wordmark" aria-label="Zunova">
+          {'Zunova'.split('').map((ch, i) => (
             <span key={i} style={{ '--i': i }} aria-hidden="true">{ch}</span>
           ))}
         </h1>
@@ -37,7 +37,7 @@ export function Hero() {
 
       <div className="hero-solid">
         <p className="hero-sub fade" style={{ '--d': '0.95s' }}>
-          Web &amp; Software
+          Web, Software &amp; AI
           <br />
           Development Agency
         </p>

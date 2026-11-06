@@ -32,7 +32,7 @@ test('renders all 16 questions, closed by default', () => {
 test('each item opens independently', async () => {
   setup()
   const user = userEvent.setup()
-  const q1 = screen.getByText('What exactly does Vault Development do?')
+  const q1 = screen.getByText('What exactly does Zunova Digital do?')
   const q2 = screen.getByText('Where are you located and do you work remotely?')
   await user.click(q1)
   await user.click(q2)

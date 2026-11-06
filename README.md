@@ -1,6 +1,6 @@
-# Vault Development website
+# Zunova Digital website
 
-Marketing site for Vault Development, built with React, Vite and Tailwind.
+Marketing site for Zunova Digital, built with React, Vite and Tailwind.
 
 ## Develop
 

@@ -9,35 +9,35 @@ export function FAQ() {
   return (
     <>
       <Helmet>
-        <title>FAQ | Web Design & AI Development Questions | Vault Development</title>
+        <title>FAQ | Web Design & AI Development Questions | Zunova Digital</title>
         <meta
           name="description"
-          content="Common questions about working with Vault Development — pricing, timelines, process, AI services, and ongoing support."
+          content="Common questions about working with Zunova Digital — pricing, timelines, process, AI services, and ongoing support."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Vault Development" />
-        <meta property="og:title" content="FAQ | Vault Development" />
+        <meta property="og:site_name" content="Zunova Digital" />
+        <meta property="og:title" content="FAQ | Zunova Digital" />
         <meta
           property="og:description"
-          content="Everything you need to know about working with Vault Development — pricing, timelines, AI services, and more."
+          content="Everything you need to know about working with Zunova Digital — pricing, timelines, AI services, and more."
         />
-        <meta property="og:image" content="https://vaultwebsiteagency.com/og-image.png" />
-        <meta property="og:url" content="https://vaultwebsiteagency.com/faq" />
+        <meta property="og:image" content="https://zunovadigital.com/og-image.png" />
+        <meta property="og:url" content="https://zunovadigital.com/faq" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="FAQ | Vault Development" />
+        <meta name="twitter:title" content="FAQ | Zunova Digital" />
         <meta
           name="twitter:description"
-          content="Everything you need to know about working with Vault Development — pricing, timelines, AI services, and more."
+          content="Everything you need to know about working with Zunova Digital — pricing, timelines, AI services, and more."
         />
-        <meta name="twitter:image" content="https://vaultwebsiteagency.com/og-image.png" />
-        <link rel="canonical" href="https://vaultwebsiteagency.com/faq" />
+        <meta name="twitter:image" content="https://zunovadigital.com/og-image.png" />
+        <link rel="canonical" href="https://zunovadigital.com/faq" />
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'FAQPage',
             mainEntity: [
-              { '@type': 'Question', name: 'What exactly does Vault Development do?', acceptedAnswer: { '@type': 'Answer', text: 'Vault Development builds custom websites, web applications, mobile apps, and AI-powered tools for businesses of all sizes. We handle everything from design and development to deployment and ongoing maintenance — all under one roof.' } },
-              { '@type': 'Question', name: 'Where are you located and do you work remotely?', acceptedAnswer: { '@type': 'Answer', text: "We're based in Middle Georgia, but we work with clients nationwide. Almost everything we do is handled remotely via video calls, email, and project management tools." } },
+              { '@type': 'Question', name: 'What exactly does Zunova Digital do?', acceptedAnswer: { '@type': 'Answer', text: 'Zunova Digital builds custom websites, web applications, mobile apps, and AI-powered tools for businesses of all sizes. We handle everything from design and development to deployment and ongoing maintenance — all under one roof.' } },
+              { '@type': 'Question', name: 'Where are you located and do you work remotely?', acceptedAnswer: { '@type': 'Answer', text: "We're based in Atlanta, Georgia, but we work with clients nationwide. Almost everything we do is handled remotely via video calls, email, and project management tools." } },
               { '@type': 'Question', name: 'How much does a website cost?', acceptedAnswer: { '@type': 'Answer', text: 'Every project is custom-quoted. Simple sites are more affordable, full platforms are priced by scope. We always provide a full quote before starting — no surprises.' } },
               { '@type': 'Question', name: 'How long does a project take?', acceptedAnswer: { '@type': 'Answer', text: 'Most websites are completed in about one week. Larger or more complex projects — such as web apps, software, or AI integrations — typically take 2–4 weeks. We give you a clear timeline upfront.' } },
               { '@type': 'Question', name: 'Do you require a deposit?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, 50% upfront before work begins, with the remainder due at launch. For larger projects we can structure milestone-based payment schedules.' } },
@@ -55,7 +55,7 @@ export function FAQ() {
       <PageHero
         eyebrow="FAQ"
         title="Questions, answered."
-        lead="Everything you need to know about working with Vault Development."
+        lead="Everything you need to know about working with Zunova Digital."
       />
       <section className="sec wrap paper">
         <div className="faq-grid">

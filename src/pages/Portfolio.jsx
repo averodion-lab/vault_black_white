@@ -8,36 +8,36 @@ export function Portfolio() {
   return (
     <>
       <Helmet>
-        <title>Our Work | Portfolio | Vault Development</title>
+        <title>Our Work | Portfolio | Zunova Digital</title>
         <meta
           name="description"
-          content="See the work Vault Development has delivered — custom websites, AI systems, and digital products for real businesses."
+          content="See the work Zunova Digital has delivered — custom websites, AI systems, and digital products for real businesses."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Vault Development" />
-        <meta property="og:title" content="Our Work | Portfolio | Vault Development" />
+        <meta property="og:site_name" content="Zunova Digital" />
+        <meta property="og:title" content="Our Work | Portfolio | Zunova Digital" />
         <meta
           property="og:description"
-          content="See the work Vault Development has delivered — custom websites, AI systems, and digital products for real businesses."
+          content="See the work Zunova Digital has delivered — custom websites, AI systems, and digital products for real businesses."
         />
-        <meta property="og:image" content="https://vaultwebsiteagency.com/og-image.png" />
-        <meta property="og:url" content="https://vaultwebsiteagency.com/portfolio" />
+        <meta property="og:image" content="https://zunovadigital.com/og-image.png" />
+        <meta property="og:url" content="https://zunovadigital.com/portfolio" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Our Work | Portfolio | Vault Development" />
+        <meta name="twitter:title" content="Our Work | Portfolio | Zunova Digital" />
         <meta
           name="twitter:description"
-          content="See the work Vault Development has delivered — custom websites, AI systems, and digital products for real businesses."
+          content="See the work Zunova Digital has delivered — custom websites, AI systems, and digital products for real businesses."
         />
-        <meta name="twitter:image" content="https://vaultwebsiteagency.com/og-image.png" />
-        <link rel="canonical" href="https://vaultwebsiteagency.com/portfolio" />
+        <meta name="twitter:image" content="https://zunovadigital.com/og-image.png" />
+        <link rel="canonical" href="https://zunovadigital.com/portfolio" />
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'CollectionPage',
-            name: 'Portfolio | Vault Development',
-            description: 'A showcase of custom websites, AI systems, and digital products built by Vault Development for real businesses.',
-            url: 'https://vaultwebsiteagency.com/portfolio',
-            provider: { '@type': 'LocalBusiness', name: 'Vault Development', '@id': 'https://vaultwebsiteagency.com/#business' },
+            name: 'Portfolio | Zunova Digital',
+            description: 'A showcase of custom websites, AI systems, and digital products built by Zunova Digital for real businesses.',
+            url: 'https://zunovadigital.com/portfolio',
+            provider: { '@type': 'LocalBusiness', name: 'Zunova Digital', '@id': 'https://zunovadigital.com/#business' },
             hasPart: [
               { '@type': 'CreativeWork', name: 'LeadEngine', description: 'AI-powered lead management system for home service companies with automated SMS, email, and voicemail follow-ups.' },
               { '@type': 'CreativeWork', name: 'Ramzef Construction', description: 'Custom website for a construction company showcasing services and driving local leads.' },

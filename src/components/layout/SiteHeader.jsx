@@ -30,7 +30,7 @@ export function SiteHeader() {
   return (
     <>
       <header className="site-header">
-        <Link className="site-mark" to="/" aria-label="Vault Development home">
+        <Link className="site-mark" to="/" aria-label="Zunova Digital home">
           <Mark />
         </Link>
         <Link className="site-pill" to="/contact">

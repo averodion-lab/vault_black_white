@@ -6,9 +6,9 @@ const SECTIONS = [
     h: 'Who we are',
     body: (
       <p>
-        Vault Development ("Vault," "we," "us") builds websites, software, and AI tools for businesses. We're based
-        in Middle Georgia and serve clients nationwide. This policy explains what information{' '}
-        <span className="text-ink">vaultwebsiteagency.com</span> collects and how we use it. It covers this website
+        Zunova Digital ("Zunova," "we," "us") builds websites, software, and AI tools for businesses. We're based
+        in Atlanta, Georgia and serve clients nationwide. This policy explains what information{' '}
+        <span className="text-ink">zunovadigital.com</span> collects and how we use it. It covers this website
         only — not the separate client work we deliver under individual project agreements.
       </p>
     ),
@@ -140,28 +140,28 @@ export function Privacy() {
   return (
     <>
       <Helmet>
-        <title>Privacy Policy | Vault Development</title>
+        <title>Privacy Policy | Zunova Digital</title>
         <meta
           name="description"
-          content="How Vault Development collects, uses, and protects information on vaultwebsiteagency.com."
+          content="How Zunova Digital collects, uses, and protects information on zunovadigital.com."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Vault Development" />
-        <meta property="og:title" content="Privacy Policy | Vault Development" />
+        <meta property="og:site_name" content="Zunova Digital" />
+        <meta property="og:title" content="Privacy Policy | Zunova Digital" />
         <meta
           property="og:description"
-          content="How Vault Development collects, uses, and protects information on vaultwebsiteagency.com."
+          content="How Zunova Digital collects, uses, and protects information on zunovadigital.com."
         />
-        <meta property="og:image" content="https://vaultwebsiteagency.com/og-image.png" />
-        <meta property="og:url" content="https://vaultwebsiteagency.com/privacy" />
+        <meta property="og:image" content="https://zunovadigital.com/og-image.png" />
+        <meta property="og:url" content="https://zunovadigital.com/privacy" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Privacy Policy | Vault Development" />
+        <meta name="twitter:title" content="Privacy Policy | Zunova Digital" />
         <meta
           name="twitter:description"
-          content="How Vault Development collects, uses, and protects information on vaultwebsiteagency.com."
+          content="How Zunova Digital collects, uses, and protects information on zunovadigital.com."
         />
-        <meta name="twitter:image" content="https://vaultwebsiteagency.com/og-image.png" />
-        <link rel="canonical" href="https://vaultwebsiteagency.com/privacy" />
+        <meta name="twitter:image" content="https://zunovadigital.com/og-image.png" />
+        <link rel="canonical" href="https://zunovadigital.com/privacy" />
       </Helmet>
       <section className="sec wrap" style={{ paddingTop: 'clamp(150px, 16vw, 220px)' }}>
         <div className="legal">

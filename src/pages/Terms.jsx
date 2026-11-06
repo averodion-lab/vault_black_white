@@ -6,7 +6,7 @@ const SECTIONS = [
     h: 'Agreement to terms',
     body: (
       <p>
-        These terms govern your use of vaultwebsiteagency.com. By using this site, you agree to them. If you don't
+        These terms govern your use of zunovadigital.com. By using this site, you agree to them. If you don't
         agree, please don't use the site. These terms cover the website only — actual client projects are governed
         by a separate written agreement or statement of work signed before work begins.
       </p>
@@ -16,7 +16,7 @@ const SECTIONS = [
     h: 'What we offer',
     body: (
       <p>
-        Vault Development provides custom web design, web development, AI implementation, app development, software
+        Zunova Digital provides custom web design, web development, AI implementation, app development, software
         development, and ongoing maintenance services. Pricing, scope, and timelines for any project are
         custom-quoted and confirmed in writing before work starts — nothing on this site is a binding price quote.
       </p>
@@ -39,7 +39,7 @@ const SECTIONS = [
     h: 'Intellectual property',
     body: (
       <p>
-        The content, design, graphics, and code of this website belong to Vault Development unless otherwise noted,
+        The content, design, graphics, and code of this website belong to Zunova Digital unless otherwise noted,
         and are protected by applicable copyright and trademark law. Work we deliver to clients under a signed
         project agreement is licensed or assigned as specified in that agreement, not by these terms.
       </p>
@@ -68,7 +68,7 @@ const SECTIONS = [
     h: 'Limitation of liability',
     body: (
       <p>
-        To the extent permitted by law, Vault Development isn't liable for indirect, incidental, or consequential
+        To the extent permitted by law, Zunova Digital isn't liable for indirect, incidental, or consequential
         damages arising from your use of this site. Nothing here limits liability that can't be limited under
         applicable law.
       </p>
@@ -109,22 +109,22 @@ export function Terms() {
   return (
     <>
       <Helmet>
-        <title>Terms of Service | Vault Development</title>
+        <title>Terms of Service | Zunova Digital</title>
         <meta
           name="description"
-          content="The terms that govern your use of vaultwebsiteagency.com."
+          content="The terms that govern your use of zunovadigital.com."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Vault Development" />
-        <meta property="og:title" content="Terms of Service | Vault Development" />
-        <meta property="og:description" content="The terms that govern your use of vaultwebsiteagency.com." />
-        <meta property="og:image" content="https://vaultwebsiteagency.com/og-image.png" />
-        <meta property="og:url" content="https://vaultwebsiteagency.com/terms" />
+        <meta property="og:site_name" content="Zunova Digital" />
+        <meta property="og:title" content="Terms of Service | Zunova Digital" />
+        <meta property="og:description" content="The terms that govern your use of zunovadigital.com." />
+        <meta property="og:image" content="https://zunovadigital.com/og-image.png" />
+        <meta property="og:url" content="https://zunovadigital.com/terms" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Terms of Service | Vault Development" />
-        <meta name="twitter:description" content="The terms that govern your use of vaultwebsiteagency.com." />
-        <meta name="twitter:image" content="https://vaultwebsiteagency.com/og-image.png" />
-        <link rel="canonical" href="https://vaultwebsiteagency.com/terms" />
+        <meta name="twitter:title" content="Terms of Service | Zunova Digital" />
+        <meta name="twitter:description" content="The terms that govern your use of zunovadigital.com." />
+        <meta name="twitter:image" content="https://zunovadigital.com/og-image.png" />
+        <link rel="canonical" href="https://zunovadigital.com/terms" />
       </Helmet>
       <section className="sec wrap" style={{ paddingTop: 'clamp(150px, 16vw, 220px)' }}>
         <div className="legal">

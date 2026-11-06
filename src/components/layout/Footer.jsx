@@ -15,7 +15,7 @@ export function Footer() {
       <div className="foot-top">
         <div className="foot-brand">
           <Mark size={32} />
-          <p>Custom websites, AI solutions, and software development for businesses everywhere. Based in Middle Georgia.</p>
+          <p>Custom websites, AI solutions, and software development for businesses everywhere. Based in Atlanta, Georgia.</p>
           <div className="contact">
             <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
             <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>
@@ -48,14 +48,14 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <p className="foot-word" aria-hidden="true">Vault</p>
+      <p className="foot-word" aria-hidden="true">Zunova</p>
       <div className="foot-bottom">
-        <span>© 2026 Vault Development. All rights reserved.</span>
+        <span>© 2026 Zunova Digital. All rights reserved.</span>
         <nav aria-label="Legal">
           <Link to="/privacy">Privacy Policy</Link>
           <Link to="/terms">Terms of Service</Link>
         </nav>
-        <span>Built in Middle Georgia · Serving Nationwide</span>
+        <span>Built in Atlanta, Georgia · Serving Nationwide</span>
       </div>
     </footer>
   )

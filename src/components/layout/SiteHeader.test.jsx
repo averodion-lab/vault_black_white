@@ -13,7 +13,7 @@ function setup() {
 
 test('links the mark home and the pill to contact', () => {
   setup()
-  expect(screen.getByRole('link', { name: 'Vault Development home' })).toHaveAttribute('href', '/')
+  expect(screen.getByRole('link', { name: 'Zunova Digital home' })).toHaveAttribute('href', '/')
   expect(screen.getByRole('link', { name: /contact now/i })).toHaveAttribute('href', '/contact')
 })
 

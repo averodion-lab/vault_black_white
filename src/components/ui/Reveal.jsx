@@ -1,4 +1,5 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useRef } from 'react'
+import { useIsoLayoutEffect } from '@/lib/useIsoLayoutEffect'
 import { cn } from '@/lib/utils'
 
 /**
@@ -9,7 +10,7 @@ import { cn } from '@/lib/utils'
 export function Reveal({ as: Tag = 'div', delay = 0, className, style, children, ...props }) {
   const ref = useRef(null)
 
-  useLayoutEffect(() => {
+  useIsoLayoutEffect(() => {
     const el = ref.current
     if (!el || typeof IntersectionObserver === 'undefined') return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return

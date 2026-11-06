@@ -1,4 +1,5 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
+import { useIsoLayoutEffect } from '@/lib/useIsoLayoutEffect'
 
 function split(value) {
   const m = value.match(/\d+/)
@@ -6,23 +7,25 @@ function split(value) {
   return { pre: value.slice(0, m.index), num: parseInt(m[0], 10), suf: value.slice(m.index + m[0].length) }
 }
 
-/** Shows the final value at rest; counts up from zero when it first scrolls into view from below the fold. */
-export function CountUp({ value, duration = 1400 }) {
+/**
+ * Counts up from zero each time the number scrolls into view, and resets once it's fully out of view so it
+ * replays next time. Shows the final value at rest (prerendered HTML, reduced motion, no IntersectionObserver).
+ */
+export function CountUp({ value, duration = 2000, delay = 0 }) {
   const ref = useRef(null)
   const [display, setDisplay] = useState(value)
 
-  useLayoutEffect(() => {
+  useIsoLayoutEffect(() => {
     const el = ref.current
     const parts = split(value)
     if (!el || !parts || typeof IntersectionObserver === 'undefined') return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    if (el.getBoundingClientRect().top <= window.innerHeight) return
 
-    setDisplay(`${parts.pre}0${parts.suf}`)
+    const zero = `${parts.pre}0${parts.suf}`
+
     let raf = 0
-    const io = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) return
-      io.disconnect()
+    let timer = 0
+    const run = () => {
       const t0 = performance.now()
       const step = (t) => {
         const p = Math.min((t - t0) / duration, 1)
@@ -30,13 +33,32 @@ export function CountUp({ value, duration = 1400 }) {
         if (p < 1) raf = requestAnimationFrame(step)
       }
       raf = requestAnimationFrame(step)
-    })
-    io.observe(el)
-    return () => {
-      io.disconnect()
+    }
+    const stop = () => {
+      clearTimeout(timer)
       cancelAnimationFrame(raf)
     }
-  }, [value, duration])
+
+    const enter = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return
+      stop()
+      setDisplay(zero)
+      // Wait for the section's fade-in to settle so the count is visible
+      timer = setTimeout(run, 350 + delay)
+    }, { threshold: 0.6 })
+    const leave = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) return
+      stop()
+      setDisplay(zero)
+    }, { threshold: 0 })
+    enter.observe(el)
+    leave.observe(el)
+    return () => {
+      enter.disconnect()
+      leave.disconnect()
+      stop()
+    }
+  }, [value, duration, delay])
 
   return (
     <b ref={ref} aria-label={value}>

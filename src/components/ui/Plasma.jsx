@@ -4,13 +4,14 @@ const VERT = 'attribute vec2 a; void main(){ gl_Position = vec4(a, 0., 1.); }'
 
 // Monochrome domain-warped plasma: white liquid on one side, black smoke on the
 // other, split by a rippling edge. On narrow screens the split turns horizontal.
-const FRAG = `
+const FRAG = (octaves) => `
 precision highp float;
+#define OCT ${octaves}
 uniform vec2 R; uniform float T; uniform vec2 MS; uniform float MOB; uniform float INTRO; uniform float EDGE;
 float h(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233))) * 43758.5453); }
 float n(vec2 p){ vec2 i=floor(p), f=fract(p); vec2 u=f*f*(3.-2.*f);
   return mix(mix(h(i),h(i+vec2(1,0)),u.x), mix(h(i+vec2(0,1)),h(i+vec2(1,1)),u.x), u.y); }
-float fbm(vec2 p){ float v=0., a=.5; mat2 r=mat2(.8,.6,-.6,.8); for(int i=0;i<6;i++){ v+=a*n(p); p=r*p*2.02; a*=.5; } return v; }
+float fbm(vec2 p){ float v=0., a=.5; mat2 r=mat2(.8,.6,-.6,.8); for(int i=0;i<OCT;i++){ v+=a*n(p); p=r*p*2.02; a*=.5; } return v; }
 float warp(vec2 p, float t, out vec2 q){
   q = vec2(fbm(p + vec2(0., t*.06)), fbm(p + vec2(5.2,1.3) - vec2(t*.05, 0.)));
   vec2 r = vec2(fbm(p + 3.*q + vec2(1.7,9.2) + t*.03), fbm(p + 3.*q + vec2(8.3,2.8) - t*.025));
@@ -57,92 +58,137 @@ export function Plasma({ edge = 0.46 }) {
 
   useEffect(() => {
     const c = canvasRef.current
-    const gl = c && c.getContext('webgl', { antialias: false })
-    if (!gl) return
+    if (!c) return
+    let cleanup = () => {}
+    let cancelled = false
 
-    const reduce = prefersReducedMotion()
-    const compile = (type, src) => {
-      const s = gl.createShader(type)
-      gl.shaderSource(s, src)
-      gl.compileShader(s)
-      return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null
-    }
-    const vs = compile(gl.VERTEX_SHADER, VERT)
-    const fs = compile(gl.FRAGMENT_SHADER, FRAG)
-    if (!vs || !fs) return
-    const pr = gl.createProgram()
-    gl.attachShader(pr, vs)
-    gl.attachShader(pr, fs)
-    gl.linkProgram(pr)
-    if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return
-    gl.useProgram(pr)
+    // Phones get a lighter plasma: fewer noise octaves, fewer pixels, 30fps. It's soft and blurry, so it looks the same.
+    const lite = window.matchMedia('(max-width: 640px), (pointer: coarse)').matches
 
-    const buf = gl.createBuffer()
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf)
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW)
-    const loc = gl.getAttribLocation(pr, 'a')
-    gl.enableVertexAttribArray(loc)
-    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0)
-    const U = (name) => gl.getUniformLocation(pr, name)
-    const uR = U('R'), uT = U('T'), uMS = U('MS'), uMOB = U('MOB'), uI = U('INTRO'), uE = U('EDGE')
+    function start() {
+      if (cancelled) return
+      const gl = c.getContext('webgl', { antialias: false, powerPreference: 'low-power' })
+      if (!gl) return
 
-    let mx = 0.5, my = 0.5, sx = 0.5, sy = 0.5
-    let visible = true
-    let raf = 0
-    const t0 = performance.now()
+      const reduce = prefersReducedMotion()
+      const compile = (type, src) => {
+        const s = gl.createShader(type)
+        gl.shaderSource(s, src)
+        gl.compileShader(s)
+        return s
+      }
+      const vs = compile(gl.VERTEX_SHADER, VERT)
+      const fs = compile(gl.FRAGMENT_SHADER, FRAG(lite ? 4 : 6))
+      const pr = gl.createProgram()
+      gl.attachShader(pr, vs)
+      gl.attachShader(pr, fs)
+      gl.linkProgram(pr)
 
-    function size() {
-      const d = Math.min(window.devicePixelRatio || 1, 1.5)
-      const r = c.getBoundingClientRect()
-      c.width = Math.max(1, Math.round(r.width * d * 0.75))
-      c.height = Math.max(1, Math.round(r.height * d * 0.75))
-      gl.viewport(0, 0, c.width, c.height)
-    }
-    function draw(now) {
-      sx += (mx - sx) * 0.03
-      sy += (my - sy) * 0.03
-      const intro = reduce ? 1 : Math.min(1, (now - t0) / 1400)
-      gl.uniform2f(uR, c.width, c.height)
-      gl.uniform1f(uT, reduce ? 12 : (now - t0) / 1000 + 12)
-      gl.uniform2f(uMS, sx, sy)
-      gl.uniform1f(uMOB, window.innerWidth <= 640 ? 1 : 0)
-      gl.uniform1f(uI, 1 - Math.pow(1 - intro, 3))
-      gl.uniform1f(uE, edge)
-      gl.drawArrays(gl.TRIANGLES, 0, 6)
-    }
-    function frame(now) {
-      raf = requestAnimationFrame(frame)
-      if (!visible || document.hidden) return
-      draw(now)
-    }
-    function onMove(e) {
-      const r = c.getBoundingClientRect()
-      mx = (e.clientX - r.left) / r.width
-      my = 1 - (e.clientY - r.top) / r.height
+      // Where supported, let the driver compile in the background instead of blocking the main thread.
+      const par = gl.getExtension('KHR_parallel_shader_compile')
+      let poll = 0
+      const whenLinked = () => {
+        if (cancelled) return
+        if (par && !gl.getProgramParameter(pr, par.COMPLETION_STATUS_KHR)) {
+          poll = requestAnimationFrame(whenLinked)
+          return
+        }
+        if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return
+        run(gl, pr, reduce)
+      }
+      whenLinked()
+      cleanup = () => cancelAnimationFrame(poll)
     }
 
-    size()
-    const ro = new ResizeObserver(() => {
+    function run(gl, pr, reduce) {
+      gl.useProgram(pr)
+      const buf = gl.createBuffer()
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf)
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW)
+      const loc = gl.getAttribLocation(pr, 'a')
+      gl.enableVertexAttribArray(loc)
+      gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0)
+      const U = (name) => gl.getUniformLocation(pr, name)
+      const uR = U('R'), uT = U('T'), uMS = U('MS'), uMOB = U('MOB'), uI = U('INTRO'), uE = U('EDGE')
+
+      let mx = 0.5, my = 0.5, sx = 0.5, sy = 0.5
+      let visible = true
+      let raf = 0
+      let last = 0
+      const minGap = lite ? 1000 / 30 - 2 : 0
+      const t0 = performance.now()
+
+      function size() {
+        const d = Math.min(window.devicePixelRatio || 1, 1.5)
+        const scale = lite ? 0.5 : 0.75
+        const r = c.getBoundingClientRect()
+        c.width = Math.max(1, Math.round(r.width * d * scale))
+        c.height = Math.max(1, Math.round(r.height * d * scale))
+        gl.viewport(0, 0, c.width, c.height)
+      }
+      function draw(now) {
+        sx += (mx - sx) * 0.03
+        sy += (my - sy) * 0.03
+        const intro = reduce ? 1 : Math.min(1, (now - t0) / 1400)
+        gl.uniform2f(uR, c.width, c.height)
+        gl.uniform1f(uT, reduce ? 12 : (now - t0) / 1000 + 12)
+        gl.uniform2f(uMS, sx, sy)
+        gl.uniform1f(uMOB, window.innerWidth <= 640 ? 1 : 0)
+        gl.uniform1f(uI, 1 - Math.pow(1 - intro, 3))
+        gl.uniform1f(uE, edge)
+        gl.drawArrays(gl.TRIANGLES, 0, 6)
+      }
+      function frame(now) {
+        raf = requestAnimationFrame(frame)
+        if (!visible || document.hidden || now - last < minGap) return
+        last = now
+        draw(now)
+      }
+      function onMove(e) {
+        const r = c.getBoundingClientRect()
+        mx = (e.clientX - r.left) / r.width
+        my = 1 - (e.clientY - r.top) / r.height
+      }
+
       size()
-      if (reduce) draw(performance.now())
-    })
-    ro.observe(c)
-    const io = new IntersectionObserver(([entry]) => (visible = entry.isIntersecting))
-    io.observe(c)
-    setReady(true)
+      const ro = new ResizeObserver(() => {
+        size()
+        if (reduce) draw(performance.now())
+      })
+      ro.observe(c)
+      const io = new IntersectionObserver(([entry]) => (visible = entry.isIntersecting))
+      io.observe(c)
+      setReady(true)
 
-    if (reduce) {
-      draw(performance.now())
-    } else {
-      window.addEventListener('pointermove', onMove)
-      raf = requestAnimationFrame(frame)
+      if (reduce) {
+        draw(performance.now())
+      } else {
+        window.addEventListener('pointermove', onMove)
+        raf = requestAnimationFrame(frame)
+      }
+
+      cleanup = () => {
+        cancelAnimationFrame(raf)
+        window.removeEventListener('pointermove', onMove)
+        ro.disconnect()
+        io.disconnect()
+      }
     }
+
+    // Wait until the page has loaded and the browser is idle, so the hero text paints first;
+    // the CSS gradient fallback stands in until the first frame.
+    const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 200))
+    let idleId = 0
+    const begin = () => { idleId = idle(start, { timeout: 2500 }) }
+    if (document.readyState === 'complete') begin()
+    else window.addEventListener('load', begin, { once: true })
 
     return () => {
-      cancelAnimationFrame(raf)
-      window.removeEventListener('pointermove', onMove)
-      ro.disconnect()
-      io.disconnect()
+      cancelled = true
+      window.removeEventListener('load', begin)
+      if (window.cancelIdleCallback) window.cancelIdleCallback(idleId)
+      else clearTimeout(idleId)
+      cleanup()
     }
   }, [edge])
 

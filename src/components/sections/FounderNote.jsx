@@ -1,4 +1,5 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
+import { useIsoLayoutEffect } from '@/lib/useIsoLayoutEffect'
 import { TEAM } from '@/data/site'
 
 /**
@@ -11,7 +12,7 @@ export function FounderNote({ children, tone = 'dark', className }) {
   const [typing, setTyping] = useState(false)
   const founder = TEAM[0]
 
-  useLayoutEffect(() => {
+  useIsoLayoutEffect(() => {
     const el = ref.current
     if (!el || typeof IntersectionObserver === 'undefined') return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return

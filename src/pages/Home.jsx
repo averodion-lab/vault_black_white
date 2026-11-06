@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet-async'
-import { GOOGLE_RATING, TESTIMONIALS } from '@/data/testimonials'
 import { Hero } from './home/Hero'
 import { AboutStrip } from './home/AboutStrip'
 import { Services } from './home/Services'
+import { Journey } from './home/Journey'
 import { Approach } from './home/Approach'
 import { Numbers } from './home/Numbers'
 import { Work } from './home/Work'
@@ -16,40 +16,29 @@ const JSON_LD = {
   '@graph': [
     {
       '@type': 'LocalBusiness',
-      '@id': 'https://vaultwebsiteagency.com/#business',
-      name: 'Vault Development',
+      '@id': 'https://zunovadigital.com/#business',
+      name: 'Zunova Digital',
       description:
-        'Custom websites, AI solutions, and software development for businesses nationwide. Based in Middle Georgia.',
-      url: 'https://vaultwebsiteagency.com',
+        'Custom websites, AI solutions, and software development for businesses nationwide. Based in Atlanta, Georgia.',
+      url: 'https://zunovadigital.com',
       telephone: '+16787556900',
       email: 'vaultdevelopmentagency@gmail.com',
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Middle Georgia',
+        addressLocality: 'Atlanta',
         addressRegion: 'GA',
         addressCountry: 'US',
       },
       priceRange: '$$',
-      serviceArea: { '@type': 'Country', name: 'United States' },
+      areaServed: [{ '@type': 'State', name: 'Georgia' }, { '@type': 'Country', name: 'United States' }],
+      image: 'https://zunovadigital.com/og-image.png',
+      logo: 'https://zunovadigital.com/favicon.svg',
       sameAs: ['https://www.instagram.com/vaultdevelopment', 'https://www.facebook.com/share/1DzY5gekXH/'],
       founder: { '@type': 'Person', name: 'Rodion Averianov', jobTitle: 'Founder & Lead Software Developer' },
       employee: [
         { '@type': 'Person', name: 'Rodion Averianov', jobTitle: 'Founder & Lead Software Developer' },
         { '@type': 'Person', name: 'Ryan Grant', jobTitle: 'Digital Marketing Specialist' },
       ],
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: GOOGLE_RATING.score.toFixed(1),
-        reviewCount: GOOGLE_RATING.count,
-        bestRating: '5',
-        worstRating: '1',
-      },
-      review: TESTIMONIALS.map((t) => ({
-        '@type': 'Review',
-        author: { '@type': 'Person', name: t.name },
-        reviewRating: { '@type': 'Rating', ratingValue: t.rating, bestRating: '5' },
-        reviewBody: t.body,
-      })),
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Web Design & Development Services',
@@ -63,7 +52,7 @@ const JSON_LD = {
         ],
       },
     },
-    { '@type': 'WebSite', name: 'Vault Development', url: 'https://vaultwebsiteagency.com' },
+    { '@type': 'WebSite', name: 'Zunova Digital', url: 'https://zunovadigital.com' },
   ],
 }
 
@@ -71,33 +60,34 @@ export function Home() {
   return (
     <>
       <Helmet>
-        <title>Web Design & AI Development Agency | Vault Development | Middle Georgia</title>
+        <title>Web Design & AI Development Agency | Zunova Digital | Atlanta, GA</title>
         <meta
           name="description"
-          content="Vault Development — Custom websites, AI solutions, and software development for businesses nationwide. Based in Middle Georgia."
+          content="Zunova Digital — Custom websites, AI solutions, and software development for businesses nationwide. Based in Atlanta, Georgia."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Vault Development" />
-        <meta property="og:title" content="Vault Development | Custom Websites & AI Solutions" />
+        <meta property="og:site_name" content="Zunova Digital" />
+        <meta property="og:title" content="Zunova Digital | Custom Websites & AI Solutions" />
         <meta
           property="og:description"
           content="Custom websites, AI solutions, and software development for businesses of all sizes. 100% custom built. Serving nationwide."
         />
-        <meta property="og:image" content="https://vaultwebsiteagency.com/og-image.png" />
-        <meta property="og:url" content="https://vaultwebsiteagency.com" />
+        <meta property="og:image" content="https://zunovadigital.com/og-image.png" />
+        <meta property="og:url" content="https://zunovadigital.com" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Vault Development | Custom Websites & AI Solutions" />
+        <meta name="twitter:title" content="Zunova Digital | Custom Websites & AI Solutions" />
         <meta
           name="twitter:description"
           content="Custom websites, AI solutions, and software development for businesses of all sizes. 100% custom built. Serving nationwide."
         />
-        <meta name="twitter:image" content="https://vaultwebsiteagency.com/og-image.png" />
-        <link rel="canonical" href="https://vaultwebsiteagency.com/" />
+        <meta name="twitter:image" content="https://zunovadigital.com/og-image.png" />
+        <link rel="canonical" href="https://zunovadigital.com/" />
         <script type="application/ld+json">{JSON.stringify(JSON_LD)}</script>
       </Helmet>
       <Hero />
       <AboutStrip />
       <Services />
+      <Journey />
       <Approach />
       <Numbers />
       <Work />
