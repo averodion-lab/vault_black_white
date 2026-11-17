@@ -7,10 +7,14 @@ test('renders Home content at the root route', () => {
   expect(screen.getByRole('heading', { level: 1, name: 'Zunova' })).toBeInTheDocument()
 })
 
-test('the old /services route redirects to the home page services section', () => {
+test('/services renders the services hub and /services/<slug> a service page', () => {
   window.history.pushState({}, '', '/services')
+  const { unmount } = render(<App />)
+  expect(screen.getByRole('heading', { level: 1, name: 'What we build.' })).toBeInTheDocument()
+  unmount()
+  window.history.pushState({}, '', '/services/web-development')
   render(<App />)
-  expect(screen.getByRole('heading', { name: 'Custom services for your business' })).toBeInTheDocument()
+  expect(screen.getByRole('heading', { level: 1, name: 'Web design & development' })).toBeInTheDocument()
 })
 
 test('renders the NotFound page inside the layout for an unmatched route', () => {

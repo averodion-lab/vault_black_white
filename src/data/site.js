@@ -15,6 +15,7 @@ export const SOCIALS = [
 
 export const PAGES = [
   { to: '/', label: 'Home' },
+  { to: '/services', label: 'Services' },
   { to: '/portfolio', label: 'Portfolio' },
   { to: '/about', label: 'About' },
   { to: '/faq', label: 'FAQ' },
@@ -26,6 +27,7 @@ export const HERO_SERVICES = ['Web Development', 'AI Implementation', 'App Devel
 export const SERVICES = [
   {
     title: 'Web Development',
+    slug: 'web-development',
     tag: 'Development',
     icon: 'web',
     body: 'Clean, fast, and scalable code for any project, from simple landing pages to full multi-page platforms. Built right the first time.',
@@ -34,6 +36,7 @@ export const SERVICES = [
   },
   {
     title: 'App Development',
+    slug: 'app-development',
     tag: 'Mobile',
     icon: 'app',
     body: 'iOS and Android apps built with React Native. One codebase, two platforms, and real results for your growing business.',
@@ -42,22 +45,25 @@ export const SERVICES = [
   },
   {
     title: 'Software Development',
+    slug: 'software-development',
     tag: 'Software',
     icon: 'software',
     body: 'Custom software tools, internal dashboards, and business automation systems built for the way your team actually works.',
     tags: ['Dashboards', 'Internal tools', 'Automation', 'Integrations'],
-    projects: ['LeadEngine'],
+    projects: ['LeadEngine', 'CertTracker'],
   },
   {
     title: 'AI Implementation',
+    slug: 'ai-implementation',
     tag: 'AI',
     icon: 'ai',
     body: 'Intelligent chatbots, workflow automation, and AI tools integrated directly into your business to save time and boost revenue.',
     tags: ['Chatbots', 'Workflow automation', 'Lead follow-up', 'Custom AI tools'],
-    projects: ['LeadEngine'],
+    projects: ['LeadEngine', 'CertTracker'],
   },
   {
     title: 'Digital Marketing',
+    slug: 'digital-marketing',
     tag: 'Marketing',
     icon: 'marketing',
     body: 'SEO, paid advertising, and content strategy that put your business in front of customers actively searching for what you offer.',
@@ -66,6 +72,7 @@ export const SERVICES = [
   },
   {
     title: 'Maintenance & Support',
+    slug: 'maintenance-support',
     tag: 'Support',
     icon: 'support',
     body: 'Security patches, regular updates, backups, and fast support so you can focus on running your business.',
@@ -107,7 +114,7 @@ export const TIERS = [
 export const FAQ_MINI = [
   { q: 'How do we get started?', a: "Fill out the contact form or call us at 678-755-6900. We'll set up a free discovery call with no commitment required." },
   { q: 'How much does a project cost?', a: 'Every project is custom-quoted. Simple sites are more affordable, and complex platforms are priced by scope. You get a full quote before we start, so there are no surprises.' },
-  { q: 'How long does a website take?', a: 'Typically 2–4 weeks for a standard site and 6–12 weeks for complex apps. You get a clear timeline upfront.' },
+  { q: 'How long does a website take?', a: 'Most websites are completed in about one week. Web apps, software, and AI integrations typically take 2–4 weeks. You get a clear timeline upfront.' },
   { q: 'Do you offer support after launch?', a: 'Yes. We offer monthly maintenance plans and are always available for updates, questions, and improvements.' },
 ]
 
@@ -132,6 +139,15 @@ export const PROJECTS = [
   },
   {
     num: '02',
+    img: asset('/assets/images/certtracker-cert-dashboard.webp'),
+    alt: 'CertTracker certification dashboard showing 79 valid certificates and crew readiness',
+    cat: 'AI Automation & Software',
+    title: 'CertTracker',
+    body: 'Automated certification tracker for a safety-management team. Updated certificates arrive by Google Drive or Gmail, an AI agent sends them to the system, the system reads each one and fills out the database, and the alert log notifies the manager before a cert expires.',
+    href: null,
+  },
+  {
+    num: '03',
     img: asset('/assets/images/ramzef-construction-website.webp'),
     alt: 'Ramzef Construction Website',
     cat: 'Web Design & Development',
@@ -140,7 +156,7 @@ export const PROJECTS = [
     href: 'https://ramzefconstructionllc.com',
   },
   {
-    num: '03',
+    num: '04',
     img: asset('/assets/images/tower-tigers-crew-website.webp'),
     alt: 'Tower Tigers Crew LLC Website',
     cat: 'Web Design & Development',
@@ -149,7 +165,7 @@ export const PROJECTS = [
     href: 'https://towertigers.com',
   },
   {
-    num: '04',
+    num: '05',
     img: asset('/assets/images/trusted-roofing-website.webp'),
     alt: 'Trusted Roofing Website',
     cat: 'Web Design & Development',
@@ -158,7 +174,7 @@ export const PROJECTS = [
     href: null,
   },
   {
-    num: '05',
+    num: '06',
     img: asset('/assets/images/seva-photos-website.webp'),
     alt: 'Seva Photos Website',
     cat: 'Web Design & Development',
@@ -167,7 +183,7 @@ export const PROJECTS = [
     href: 'https://seva-photos.com',
   },
   {
-    num: '06',
+    num: '07',
     img: asset('/assets/images/jaceys-moving-website.webp'),
     alt: "Jacey's Moving & Junk Removal Website",
     cat: 'Web Design & Development',

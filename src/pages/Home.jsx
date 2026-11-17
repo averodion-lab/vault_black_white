@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import { Hero } from './home/Hero'
 import { AboutStrip } from './home/AboutStrip'
 import { Services } from './home/Services'
@@ -15,7 +15,7 @@ const JSON_LD = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'LocalBusiness',
+      '@type': ['LocalBusiness', 'ProfessionalService'],
       '@id': 'https://zunovadigital.com/#business',
       name: 'Zunova Digital',
       description:
@@ -52,38 +52,20 @@ const JSON_LD = {
         ],
       },
     },
-    { '@type': 'WebSite', name: 'Zunova Digital', url: 'https://zunovadigital.com' },
+    { '@type': 'WebSite', name: 'Zunova Digital', url: 'https://zunovadigital.com/', publisher: { '@id': 'https://zunovadigital.com/#business' } },
   ],
 }
 
 export function Home() {
   return (
     <>
-      <Helmet>
-        <title>Web Design & AI Development Agency | Zunova Digital | Atlanta, GA</title>
-        <meta
-          name="description"
-          content="Zunova Digital — Custom websites, AI solutions, and software development for businesses nationwide. Based in Atlanta, Georgia."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Zunova Digital" />
-        <meta property="og:title" content="Zunova Digital | Custom Websites & AI Solutions" />
-        <meta
-          property="og:description"
-          content="Custom websites, AI solutions, and software development for businesses of all sizes. 100% custom built. Serving nationwide."
-        />
-        <meta property="og:image" content="https://zunovadigital.com/og-image.png" />
-        <meta property="og:url" content="https://zunovadigital.com" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Zunova Digital | Custom Websites & AI Solutions" />
-        <meta
-          name="twitter:description"
-          content="Custom websites, AI solutions, and software development for businesses of all sizes. 100% custom built. Serving nationwide."
-        />
-        <meta name="twitter:image" content="https://zunovadigital.com/og-image.png" />
-        <link rel="canonical" href="https://zunovadigital.com/" />
-        <script type="application/ld+json">{JSON.stringify(JSON_LD)}</script>
-      </Helmet>
+      <Seo
+        title="Web Design & AI Development Agency | Zunova Digital"
+        description="Zunova Digital builds custom websites, AI solutions, and software for businesses nationwide. Based in Atlanta, Georgia. 100% custom built."
+        path="/"
+        social={{ title: 'Zunova Digital | Custom Websites & AI Solutions', description: 'Custom websites, AI solutions, and software development for businesses of all sizes. 100% custom built. Serving nationwide.' }}
+        jsonLd={JSON_LD}
+      />
       <Hero />
       <AboutStrip />
       <Services />

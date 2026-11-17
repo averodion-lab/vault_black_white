@@ -4,7 +4,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import { Portfolio } from './Portfolio'
 import { PROJECTS } from '@/data/site'
 
-test('renders the hero and all 6 case studies', () => {
+test('renders the hero and all 7 case studies', () => {
   render(
     <HelmetProvider>
       <MemoryRouter>
@@ -13,7 +13,7 @@ test('renders the hero and all 6 case studies', () => {
     </HelmetProvider>
   )
   expect(screen.getByRole('heading', { level: 1, name: 'Portfolio' })).toBeInTheDocument()
-  expect(PROJECTS).toHaveLength(6)
+  expect(PROJECTS).toHaveLength(7)
   PROJECTS.forEach((p) => {
     expect(screen.getByRole('heading', { name: p.title })).toBeInTheDocument()
     expect(screen.getByAltText(p.alt)).toHaveAttribute('src', p.img)
@@ -35,3 +35,4 @@ test('live projects link out in a new tab', () => {
     expect(link).toHaveAttribute('rel', 'noopener noreferrer')
   })
 })
+

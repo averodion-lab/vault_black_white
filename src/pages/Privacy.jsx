@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import { Link } from 'react-router-dom'
 
 const SECTIONS = [
@@ -139,30 +139,12 @@ const SECTIONS = [
 export function Privacy() {
   return (
     <>
-      <Helmet>
-        <title>Privacy Policy | Zunova Digital</title>
-        <meta
-          name="description"
-          content="How Zunova Digital collects, uses, and protects information on zunovadigital.com."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Zunova Digital" />
-        <meta property="og:title" content="Privacy Policy | Zunova Digital" />
-        <meta
-          property="og:description"
-          content="How Zunova Digital collects, uses, and protects information on zunovadigital.com."
-        />
-        <meta property="og:image" content="https://zunovadigital.com/og-image.png" />
-        <meta property="og:url" content="https://zunovadigital.com/privacy" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Privacy Policy | Zunova Digital" />
-        <meta
-          name="twitter:description"
-          content="How Zunova Digital collects, uses, and protects information on zunovadigital.com."
-        />
-        <meta name="twitter:image" content="https://zunovadigital.com/og-image.png" />
-        <link rel="canonical" href="https://zunovadigital.com/privacy" />
-      </Helmet>
+      <Seo
+        title="Privacy Policy | Zunova Digital"
+        description="How Zunova Digital collects, uses, and protects information on zunovadigital.com, including analytics and contact form data."
+        path="/privacy"
+        crumb="Privacy Policy"
+      />
       <section className="sec wrap" style={{ paddingTop: 'clamp(150px, 16vw, 220px)' }}>
         <div className="legal">
           <span className="mono muted">Legal</span>

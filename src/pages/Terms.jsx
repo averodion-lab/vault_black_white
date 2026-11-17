@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import { Link } from 'react-router-dom'
 
 const SECTIONS = [
@@ -31,6 +31,37 @@ const SECTIONS = [
           <li>Submit false information through the contact form, or use it to send spam or unsolicited content.</li>
           <li>Attempt to interfere with the site's security, availability, or normal operation.</li>
           <li>Scrape, copy, or republish the site's content or design without our written permission.</li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    h: 'Client projects, payments and revisions',
+    body: (
+      <>
+        <p>
+          Nothing is bought or booked directly through this site. Every project starts with a written quote or
+          agreement that sets out the scope, price, timeline, and the terms below as they apply to that project.
+          Where the two differ, the signed agreement wins.
+        </p>
+        <ul className="mt-3 list-disc space-y-2 pl-5">
+          <li>
+            <span className="text-ink">Deposit.</span> Work begins once a deposit is received — typically 50% of the
+            quoted price, with the balance due at launch. Larger projects can be split into milestone payments.
+          </li>
+          <li>
+            <span className="text-ink">Revisions.</span> The number of design and content revision rounds is set in
+            the quote. Changes beyond that scope, or new features requested after approval, are quoted separately.
+          </li>
+          <li>
+            <span className="text-ink">Cancellation.</span> You can cancel a project in writing at any time. Work
+            completed up to that point is billed, and the deposit covers that work; it isn't refunded once work has
+            started. Deposits for projects that haven't started are refunded in full.
+          </li>
+          <li>
+            <span className="text-ink">Ownership.</span> Once the final invoice is paid, the website, app, or software
+            we built for you is yours, as described in the project agreement.
+          </li>
         </ul>
       </>
     ),
@@ -108,29 +139,17 @@ const SECTIONS = [
 export function Terms() {
   return (
     <>
-      <Helmet>
-        <title>Terms of Service | Zunova Digital</title>
-        <meta
-          name="description"
-          content="The terms that govern your use of zunovadigital.com."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Zunova Digital" />
-        <meta property="og:title" content="Terms of Service | Zunova Digital" />
-        <meta property="og:description" content="The terms that govern your use of zunovadigital.com." />
-        <meta property="og:image" content="https://zunovadigital.com/og-image.png" />
-        <meta property="og:url" content="https://zunovadigital.com/terms" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Terms of Service | Zunova Digital" />
-        <meta name="twitter:description" content="The terms that govern your use of zunovadigital.com." />
-        <meta name="twitter:image" content="https://zunovadigital.com/og-image.png" />
-        <link rel="canonical" href="https://zunovadigital.com/terms" />
-      </Helmet>
+      <Seo
+        title="Terms of Service | Zunova Digital"
+        description="The terms for using zunovadigital.com, and how client projects, payments, and intellectual property are handled by Zunova Digital."
+        path="/terms"
+        crumb="Terms of Service"
+      />
       <section className="sec wrap" style={{ paddingTop: 'clamp(150px, 16vw, 220px)' }}>
         <div className="legal">
           <span className="mono muted">Legal</span>
           <h1>Terms of Service</h1>
-          <p className="mono muted" style={{ display: 'block', marginTop: 18 }}>Last updated: September 2026</p>
+          <p className="mono muted" style={{ display: 'block', marginTop: 18 }}>Last updated: November 2026</p>
           <div className="legal-body">
             {SECTIONS.map((s) => (
               <div key={s.h}>

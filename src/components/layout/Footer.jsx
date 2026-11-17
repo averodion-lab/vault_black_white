@@ -33,7 +33,7 @@ export function Footer() {
           <h2>Services</h2>
           <ul>
             {SERVICES.map((s) => (
-              <li key={s.title}><Link to="/#services">{s.title}</Link></li>
+              <li key={s.title}><Link to={`/services/${s.slug}`}>{s.title}</Link></li>
             ))}
           </ul>
         </div>
@@ -54,6 +54,7 @@ export function Footer() {
         <nav aria-label="Legal">
           <Link to="/privacy">Privacy Policy</Link>
           <Link to="/terms">Terms of Service</Link>
+          <Link to="/accessibility">Accessibility</Link>
         </nav>
         <span>Built in Atlanta, Georgia · Serving Nationwide</span>
       </div>

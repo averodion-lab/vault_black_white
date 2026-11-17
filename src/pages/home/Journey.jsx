@@ -94,7 +94,8 @@ export function Journey() {
             </div>
           </div>
 
-          <ol className="jr-flow" id="jr-panel" role="tabpanel" aria-labelledby={`jr-tab-${journey.id}`}>
+          <div id="jr-panel" role="tabpanel" aria-labelledby={`jr-tab-${journey.id}`}>
+          <ol className="jr-flow">
             {JOURNEY_STEPS.map((s, i) => {
               const Icon = ICONS[s.icon]
               const c = journey.cards[i]
@@ -114,6 +115,7 @@ export function Journey() {
               )
             })}
           </ol>
+          </div>
 
           <div className="jr-foot">
             <h2>From first search to booked job. <span>One team runs it all.</span></h2>

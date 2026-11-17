@@ -1,0 +1,18 @@
+# Zunova Digital
+
+> Web design, software and AI development agency in Atlanta, Georgia, serving businesses nationwide. Custom websites, mobile apps, internal tools, AI chatbots and workflow automation, plus SEO and paid advertising.
+
+## Pages
+
+- [Home](https://zunovadigital.com/): services, process, pricing tiers and reviews
+- [Services](https://zunovadigital.com/services): web development, AI implementation, app development, software development, digital marketing, maintenance
+- [Portfolio](https://zunovadigital.com/portfolio): recent websites and AI systems built for real businesses
+- [About](https://zunovadigital.com/about): the team and how we work
+- [FAQ](https://zunovadigital.com/faq): pricing, timelines, deposits, support
+- [Contact](https://zunovadigital.com/contact): get a free quote, 24-hour response
+
+## Policies
+
+- [Privacy Policy](https://zunovadigital.com/privacy)
+- [Terms of Service](https://zunovadigital.com/terms)
+- [Accessibility Statement](https://zunovadigital.com/accessibility)

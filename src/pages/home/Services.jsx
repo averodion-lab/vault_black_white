@@ -46,6 +46,7 @@ export function Services() {
             <div className="svc-main">
               <h3>{s.title}</h3>
               <p>{s.body}</p>
+              <Link className="link-arrow" to={`/services/${s.slug}`}>Learn more <span>→</span></Link>
             </div>
             <div className="svc-side">
               <ul className="chips" aria-label={`${s.title} includes`}>

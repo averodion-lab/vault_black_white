@@ -21,6 +21,7 @@ test('renders the page links, legal links and copyright', () => {
   ;['Home', 'Portfolio', 'About', 'FAQ', 'Contact'].forEach((l) => expect(screen.getByRole('link', { name: l })).toBeInTheDocument())
   expect(screen.getByText('Privacy Policy')).toHaveAttribute('href', '/privacy')
   expect(screen.getByText('Terms of Service')).toHaveAttribute('href', '/terms')
+  expect(screen.getByText('Accessibility')).toHaveAttribute('href', '/accessibility')
   expect(screen.getByText('© 2026 Zunova Digital. All rights reserved.')).toBeInTheDocument()
 })
 

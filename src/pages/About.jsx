@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import { PageHero } from '@/components/sections/PageHero'
 import { Team } from '@/components/sections/Team'
 import { Reveal } from '@/components/ui/Reveal'
@@ -11,54 +11,35 @@ import { Stats } from '@/components/sections/Stats'
 export function About() {
   return (
     <>
-      <Helmet>
-        <title>About Us | Custom Web Design Agency | Zunova Digital | Atlanta, GA</title>
-        <meta
-          name="description"
-          content="Learn about Zunova Digital — a web design and AI company built to help businesses compete and grow online. 50+ clients helped. 100% custom built."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Zunova Digital" />
-        <meta property="og:title" content="About | Zunova Digital" />
-        <meta
-          property="og:description"
-          content="A web design and AI technology company built to help local and commercial businesses compete and grow in the digital world."
-        />
-        <meta property="og:image" content="https://zunovadigital.com/og-image.png" />
-        <meta property="og:url" content="https://zunovadigital.com/about" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About | Zunova Digital" />
-        <meta
-          name="twitter:description"
-          content="A web design and AI technology company built to help local and commercial businesses compete and grow in the digital world."
-        />
-        <meta name="twitter:image" content="https://zunovadigital.com/og-image.png" />
-        <link rel="canonical" href="https://zunovadigital.com/about" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'AboutPage',
-            name: 'About Zunova Digital',
-            description: 'Zunova Digital is a web design and AI technology company built to help businesses compete and grow online. Based in Atlanta, Georgia, serving clients nationwide.',
-            url: 'https://zunovadigital.com/about',
-            mainEntity: {
-              '@type': 'LocalBusiness',
-              '@id': 'https://zunovadigital.com/#business',
-              name: 'Zunova Digital',
-              foundingLocation: 'Atlanta, Georgia',
-              description: 'Custom websites, AI solutions, and software development for businesses nationwide.',
-              telephone: '+16787556900',
-              email: 'vaultdevelopmentagency@gmail.com',
-              address: { '@type': 'PostalAddress', addressLocality: 'Atlanta', addressRegion: 'GA', addressCountry: 'US' },
-              founder: { '@type': 'Person', name: 'Rodion Averianov', jobTitle: 'Founder & Lead Software Developer' },
-              employee: [
-                { '@type': 'Person', name: 'Rodion Averianov', jobTitle: 'Founder & Lead Software Developer' },
-                { '@type': 'Person', name: 'Ryan Grant', jobTitle: 'Digital Marketing Specialist' },
-              ],
-            },
-          })}
-        </script>
-      </Helmet>
+      <Seo
+        title="About Zunova Digital | Custom Web Design & AI Agency"
+        description="Zunova Digital is a web design and AI company in Atlanta, Georgia, built to help businesses compete and grow online. 50+ clients helped."
+        path="/about"
+        crumb="About"
+        social={{ title: 'About | Zunova Digital', description: 'A web design and AI technology company built to help local and commercial businesses compete and grow in the digital world.' }}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'AboutPage',
+          name: 'About Zunova Digital',
+          description: 'Zunova Digital is a web design and AI technology company built to help businesses compete and grow online. Based in Atlanta, Georgia, serving clients nationwide.',
+          url: 'https://zunovadigital.com/about',
+          mainEntity: {
+            '@type': 'LocalBusiness',
+            '@id': 'https://zunovadigital.com/#business',
+            name: 'Zunova Digital',
+            foundingLocation: 'Atlanta, Georgia',
+            description: 'Custom websites, AI solutions, and software development for businesses nationwide.',
+            telephone: '+16787556900',
+            email: 'vaultdevelopmentagency@gmail.com',
+            address: { '@type': 'PostalAddress', addressLocality: 'Atlanta', addressRegion: 'GA', addressCountry: 'US' },
+            founder: { '@type': 'Person', name: 'Rodion Averianov', jobTitle: 'Founder & Lead Software Developer' },
+            employee: [
+              { '@type': 'Person', name: 'Rodion Averianov', jobTitle: 'Founder & Lead Software Developer' },
+              { '@type': 'Person', name: 'Ryan Grant', jobTitle: 'Digital Marketing Specialist' },
+            ],
+          },
+        }}
+      />
       <PageHero
         eyebrow="About us"
         title="Built different."

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Helmet } from 'react-helmet-async'
+import { Seo } from '@/components/seo/Seo'
 import { Link } from 'react-router-dom'
 import { PageHero } from '@/components/sections/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
@@ -146,52 +146,33 @@ export function Contact() {
 
   return (
     <>
-      <Helmet>
-        <title>Contact Us | Get a Free Web Design Quote | Zunova Digital</title>
-        <meta
-          name="description"
-          content="Get in touch with Zunova Digital. Tell us about your project and we'll respond within 24 hours. No pressure, no commitment."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Zunova Digital" />
-        <meta property="og:title" content="Contact | Zunova Digital" />
-        <meta
-          property="og:description"
-          content="Get in touch with Zunova Digital. Tell us about your project and we'll respond within 24 hours."
-        />
-        <meta property="og:image" content="https://zunovadigital.com/og-image.png" />
-        <meta property="og:url" content="https://zunovadigital.com/contact" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact | Zunova Digital" />
-        <meta
-          name="twitter:description"
-          content="Get in touch with Zunova Digital. Tell us about your project and we'll respond within 24 hours."
-        />
-        <meta name="twitter:image" content="https://zunovadigital.com/og-image.png" />
-        <link rel="canonical" href="https://zunovadigital.com/contact" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'ContactPage',
-            name: 'Contact Zunova Digital',
-            description: "Get in touch with Zunova Digital. Tell us about your project and we'll respond within 24 hours.",
-            url: 'https://zunovadigital.com/contact',
-            mainEntity: {
-              '@type': 'LocalBusiness',
-              name: 'Zunova Digital',
-              telephone: '+16787556900',
-              email: 'vaultdevelopmentagency@gmail.com',
-              address: { '@type': 'PostalAddress', addressLocality: 'Atlanta', addressRegion: 'GA', addressCountry: 'US' },
-              openingHoursSpecification: {
-                '@type': 'OpeningHoursSpecification',
-                dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-                opens: '09:00',
-                closes: '18:00',
-              },
+      <Seo
+        title="Contact | Get a Free Web Design Quote | Zunova Digital"
+        description="Get in touch with Zunova Digital. Tell us about your project and we'll respond within 24 hours. No pressure, no commitment."
+        path="/contact"
+        crumb="Contact"
+        social={{ title: 'Contact | Zunova Digital', description: "Get in touch with Zunova Digital. Tell us about your project and we'll respond within 24 hours." }}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'ContactPage',
+          name: 'Contact Zunova Digital',
+          description: "Get in touch with Zunova Digital. Tell us about your project and we'll respond within 24 hours.",
+          url: 'https://zunovadigital.com/contact',
+          mainEntity: {
+            '@type': 'LocalBusiness',
+            name: 'Zunova Digital',
+            telephone: '+16787556900',
+            email: 'vaultdevelopmentagency@gmail.com',
+            address: { '@type': 'PostalAddress', addressLocality: 'Atlanta', addressRegion: 'GA', addressCountry: 'US' },
+            openingHoursSpecification: {
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+              opens: '09:00',
+              closes: '18:00',
             },
-          })}
-        </script>
-      </Helmet>
+          },
+        }}
+      />
       <PageHero
         eyebrow="Get in touch"
         title="Let's talk."
